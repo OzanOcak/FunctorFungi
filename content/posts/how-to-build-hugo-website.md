@@ -231,7 +231,7 @@ author: ["Ozan"]
 Hugo.toml is a configuration file where we can define navigation, profile module and more. 
 
 ---
-## Publishing Website
+## Publishing Website to Netlify
 
 After finishing the development of vebsite we can create public directory with ***hugo*** on terminal. The public directory will contain all the html, css, javascript and static files for the website, however we will upload our files to ***netlify*** so we can delete the public directory.
 
@@ -251,3 +251,10 @@ We need to initialize git file to push our filese to github then later we will c
 ```
 
 Then we can push our project to github.
+
+Finally we can go to Netlify and click add new site, then import existing project and then log in with desired third party application, and then we can search our project in github. You can refer **[here](https://gohugo.io/hosting-and-deployment/hosting-on-netlify/)**.
+
+base directory =
+build command = hugo
+publish directory = public
+HUGO_VERSION = hugo verion in terminal
