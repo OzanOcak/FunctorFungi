@@ -1,0 +1,113 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Functor Fungi'
+theme = "PaperMod"
+
+[[menu.main]]
+identifier = "posts"
+name = "Blog"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+identifier = "projects"
+name = "Projects"
+url = "/projects/"
+weight = 20
+
+[[menu.main]]
+identifier = "tags"
+name = "Tags"
+url = "/tags/"
+weight = 30
+
+[[menu.main]]
+identifier = "archives"
+name = "Archives"
+url = "/archives/"
+weight = 40
+
+[[menu.main]]
+identifier = "search"
+name = "Search"
+url = "/search/"
+weight = 50
+
+# there is category available
+
+[params.profileMode]
+enabled = true
+title = "Welcome! 👋"
+subtitle = "I write articles about JavaScript, TypeScript, React, **Functional Programming**, Elixir and Haskell. You can also check out my mobile applications "
+imageUrl = "img/me2.jpeg"
+imageWidth = 120
+imageHeight = 120
+imageTitle = "Data Professor"
+
+[[params.profileMode.buttons]]
+name = "Blogs"
+url = "/posts/"
+
+[[params.profileMode.buttons]]
+name = "Projects"
+url = "/posts/"
+
+[params.homeInfoParams]
+Title = "Welcome! 👋"
+Content = """This is the website of **Chanin Nantasenamat, Ph.D.** and 
+  This is the website of **Chanin Nantasenamat, Ph.D.** and This is the 
+  website of **Chanin Nantasenamat, Ph.D.** and This is the website of 
+  **Chanin Nantasenamat, Ph.D.** and """
+
+#[[params.socialIcons]]
+#name = "youtube"
+#url = "http://youtube.com/dataprofessor"
+
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "https://www.linkedin.com/in/ozanocak/"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/OzanOcak"
+
+[[params.socialIcons]]
+name = "website"
+url = "https://oocak.com"
+
+[[params.socialIcons]]
+name = "mastodon"
+url = "https://ozanocak.github.io/"
+
+[params]
+showToc = true
+TocOpen = false
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+hideMeta = false
+
+[params.cover]
+hidden = false
+hiddenInList = false
+hiddenInSingle = false
+imageTitle = 80
+imageHeight = 60
+
+[params.editPost]
+URL = ""
+Text = ""
+appendFilePath = true
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1_000
+threshold = 0.4
+minMatchCharLength = 0
+keys = ["title", "permalink", "summary", "content"]
+
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
