@@ -1,17 +1,17 @@
 ---
 title : '{{ replace .File.ContentBaseName "-" " " | title }}'
 date : {{ .Date }}
-draft : true
 author: ["Ozan"]
 categories: [""]
 tags: [""]
-description: ""
+description: '{{ replace .File.ContentBaseName "-" " " | title }}'
 weight: 1
 slug: ""
-draft: false # draft or not
+draft: false # show the page
 cover:
-    image: ""
-    caption: ""
-    alt: ""
+    image: "/img/"
+    caption: "image of"
+    alt: "image of"
     relative: false
+showToc: true # show the table of content22
 ---
