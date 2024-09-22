@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Typescript on Functor Fungi</title>
-    <link>http://localhost:1313/tags/typescript/</link>
+    <link>https://functorfungi.netlify.app/tags/typescript/</link>
     <description>Recent content in Typescript on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Aug 2024 16:42:20 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Sep 2024 17:21:02 -0400</lastBuildDate>
+    <atom:link href="https://functorfungi.netlify.app/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typescript</title>
+      <link>https://functorfungi.netlify.app/posts/typescript/</link>
+      <pubDate>Sun, 22 Sep 2024 17:21:02 -0400</pubDate>
+      <guid>https://functorfungi.netlify.app/posts/typescript/</guid>
+      <description>Typescript</description>
+    </item>
     <item>
       <title>Building Mobile App With Expo and React Native</title>
-      <link>http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/</link>
+      <link>https://functorfungi.netlify.app/projects/building-mobile-app-with-expo-and-react-native/</link>
       <pubDate>Tue, 20 Aug 2024 16:42:20 -0400</pubDate>
-      <guid>http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/</guid>
+      <guid>https://functorfungi.netlify.app/projects/building-mobile-app-with-expo-and-react-native/</guid>
       <description>Building Mobile App With Expo and React Native</description>
     </item>
   </channel>
