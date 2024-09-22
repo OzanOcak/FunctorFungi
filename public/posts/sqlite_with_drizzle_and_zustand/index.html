@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Redux | Functor Fungi</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/tags/redux/">
+<title>Sqlite_with_drizzle_and_zustand | Functor Fungi</title>
+<meta name="keywords" content="sqlite, zustand, drizzle orm">
+<meta name="description" content="Sqlite_with_drizzle_and_zustand">
+<meta name="author" content="Ozan">
+<link rel="canonical" href="http://localhost:1313/posts/sqlite_with_drizzle_and_zustand/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
@@ -18,8 +18,7 @@
 <link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/redux/index.xml">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/tags/redux/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/sqlite_with_drizzle_and_zustand/">
 <noscript>
     <style>
         #theme-toggle,
@@ -59,7 +58,7 @@
 </noscript>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -127,27 +126,54 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/tags/">Tags</a></div>
-  <h1>
-    Redux
-  </h1>
-</header>
+<main class="main">
 
-<article class="post-entry tag-entry"> 
-<figure class="entry-cover"><img loading="lazy" src="http://localhost:1313/img/projects/02/bislingo.png" alt="screenshot of the app">
-</figure>
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Building Mobile App With Expo and React Native
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>I have build my first mobile app with React Native top of Expo framework. I have used Redux for state management and Tailwind for User Interface design. I have published it on Google Store. You can ger the app here
-Bislingo ✓ Development: Developing your own vocabulary base on your interest help you master at language faster.
-✓ Entertaintment: Games can make it easier to learn educational contents and develop cognitive skills....</p>
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Sqlite_with_drizzle_and_zustand
+    </h1>
+    <div class="post-description">
+      Sqlite_with_drizzle_and_zustand
+    </div>
+    <div class="post-meta"><span title='2024-08-20 22:22:11 -0400 EDT'>August 20, 2024</span>&nbsp;·&nbsp;Ozan
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/sqlite_with_drizzle_and_zustand/database_drizzle.png" alt="drizzling on databases">
+        <p>drizzling on databases</p>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#drizzle" aria-label="Drizzle">Drizzle</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="drizzle">Drizzle<a hidden class="anchor" aria-hidden="true" href="#drizzle">#</a></h2>
+<p>Drizzle is a popular database toolkit for building modern, fast, and type-safe database applications. It can be a great choice for setting up a SQLite database in an Expo React Native app for the following reasons:</p>
+<p><strong>1- Type Safety:</strong> Drizzle provides a type-safe API, which ensures that your database interactions are type-safe and less prone to errors. This can be especially beneficial in a React Native application, where type safety is crucial for maintaining code quality and scalability.</p>
+<p><strong>2- Performance:</strong> Drizzle is designed to be fast and efficient, which can improve the overall performance of your Expo React Native app, particularly when interacting with the database.</p>
+<p><strong>3- Portability:</strong> Drizzle supports multiple database engines, including SQLite, PostgreSQL, and MySQL, making it a versatile choice for your application. This allows you to easily switch between database providers if needed, without having to rewrite significant portions of your code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>npx expo install expo-sqlite
+</span></span><span style="display:flex;"><span>expo install drizzle-orm zustand -d drizzle-kit
+</span></span></code></pre></div>
+
   </div>
-  <footer class="entry-footer"><span title='2024-08-20 16:42:20 -0400 EDT'>August 20, 2024</span>&nbsp;·&nbsp;Ozan</footer>
-  <a class="entry-link" aria-label="post link to Building Mobile App With Expo and React Native" href="http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/"></a>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/sqlite-zustand-drizzle-orm/">Sqlite, Zustand, Drizzle Orm</a></li>
+    </ul>
+  </footer>
 </article>
     </main>
     
@@ -215,6 +241,53 @@ Bislingo ✓ Development: Developing your own vocabulary base on your interest h
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

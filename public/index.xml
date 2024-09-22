@@ -6,8 +6,15 @@
     <description>Recent content on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Aug 2024 16:42:20 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 22 Sep 2024 17:21:02 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typescript</title>
+      <link>http://localhost:1313/posts/typescript/</link>
+      <pubDate>Sun, 22 Sep 2024 17:21:02 -0400</pubDate>
+      <guid>http://localhost:1313/posts/typescript/</guid>
+      <description>Typescript</description>
+    </item>
     <item>
       <title>Building Mobile App With Expo and React Native</title>
       <link>http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/</link>

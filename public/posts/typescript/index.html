@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Typescript | Functor Fungi</title>
+<meta name="keywords" content="typescript">
+<meta name="description" content="Typescript">
+<meta name="author" content="Ozan">
+<link rel="canonical" href="http://localhost:1313/posts/typescript/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fc220c15db4aef0318bbf30adc45d33d4d7c88deff3238b23eb255afdc472ca6.css" integrity="sha256-/CIMFdtK7wMYu/MK3EXTPU18iN7/MjiyPrJVr9xHLKY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/typescript/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Typescript
+    </h1>
+    <div class="post-description">
+      Typescript
+    </div>
+    <div class="post-meta"><span title='2024-09-22 17:21:02 -0400 EDT'>September 22, 2024</span>&nbsp;·&nbsp;Ozan
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/typescript/typescript.png" alt="typescript">
+        <p>typescript</p>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#understanding-advanced-types-in-typescript" aria-label="Understanding Advanced Types in TypeScript">Understanding Advanced Types in TypeScript</a><ul>
+                        
+                <li>
+                    <a href="#advanced-types" aria-label="Advanced Types">Advanced Types</a><ul>
+                        
+                <li>
+                    <a href="#as-const" aria-label="As Const">As Const</a></li>
+                <li>
+                    <a href="#tuples" aria-label="Tuples">Tuples</a></li>
+                <li>
+                    <a href="#generics" aria-label="Generics">Generics</a></li>
+                <li>
+                    <a href="#async-functions" aria-label="Async Functions">Async Functions</a></li></ul>
+                </li>
+                <li>
+                    <a href="#build-in-types" aria-label="Build in Types">Build in Types</a><ul>
+                        
+                <li>
+                    <a href="#omit-and-pick" aria-label="Omit and Pick">Omit and Pick</a></li>
+                <li>
+                    <a href="#partial-and-required" aria-label="Partial and Required">Partial and Required</a></li>
+                <li>
+                    <a href="#returntype-and-parameters" aria-label="ReturnType and Parameters">ReturnType and Parameters</a></li>
+                <li>
+                    <a href="#record" aria-label="Record">Record</a></li>
+                <li>
+                    <a href="#readonly" aria-label="Readonly">Readonly</a></li></ul>
+                </li>
+                <li>
+                    <a href="#type-narrowing" aria-label="Type Narrowing">Type Narrowing</a><ul>
+                        
+                <li>
+                    <a href="#basic-type-guards" aria-label="Basic Type Guards">Basic Type Guards</a></li>
+                <li>
+                    <a href="#discriminated-union" aria-label="Discriminated Union">Discriminated Union</a></li>
+                <li>
+                    <a href="#function-overloads" aria-label="Function Overloads">Function Overloads</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="understanding-advanced-types-in-typescript">Understanding Advanced Types in TypeScript<a hidden class="anchor" aria-hidden="true" href="#understanding-advanced-types-in-typescript">#</a></h1>
+<h2 id="advanced-types">Advanced Types<a hidden class="anchor" aria-hidden="true" href="#advanced-types">#</a></h2>
+<p>TypeScript offers a robust type system that helps developers catch errors early and improve code quality. One of the powerful features of TypeScript is its advanced types, which include constructs like as const, tuples, generics, and built-in types. In this post, we’ll explore these concepts with code snippets for clarity.</p>
+<h3 id="as-const">As Const<a hidden class="anchor" aria-hidden="true" href="#as-const">#</a></h3>
+<p>The as const assertion allows you to create immutable types. For example, while a normal variable can be mutable, using as const makes its properties read-only. This is particularly useful when creating enums or constant values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">number</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>; <span style="color:#75715e">// a is mutable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>; <span style="color:#75715e">// b is not mutable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">const</span>; <span style="color:#75715e">// this is what actually happens behind the sceen
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">num</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;1&#34;</span>, <span style="color:#e6db74">&#34;2&#34;</span>, <span style="color:#e6db74">&#34;3&#34;</span>] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">const</span>; <span style="color:#75715e">// num.push(&#39;4&#39;) is still valid witout as const
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">object</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">35</span>, <span style="color:#a6e22e">adress</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">street</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span> } } <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">const</span>; <span style="color:#75715e">// as const make every property as read only
+</span></span></span></code></pre></div><p>This can be effective for creating enums:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">LEVELS</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;begginer&#34;</span>, <span style="color:#e6db74">&#34;intermadiate&#34;</span>, <span style="color:#e6db74">&#34;advanced&#34;</span>] <span style="color:#66d9ef">as</span> <span style="color:#66d9ef">const</span>; <span style="color:#75715e">// type LEVELS = [&#39;begginer&#39; | &#39;intermadiate&#39;| &#39;advanced&#39; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Person</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">skillLevel</span><span style="color:#f92672">:</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">LEVELS</span>)[<span style="color:#66d9ef">number</span>] }; <span style="color:#75715e">// can be assigned  to variable
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">LEVELS</span>.<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">level</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">level</span>)); <span style="color:#75715e">// this can be iterated unlice type
+</span></span></span></code></pre></div><h3 id="tuples">Tuples<a hidden class="anchor" aria-hidden="true" href="#tuples">#</a></h3>
+<p>Tuples are fixed-length arrays with specific types. They can be useful for representing structured data.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Tuple</span> <span style="color:#f92672">=</span> [<span style="color:#66d9ef">string</span>, <span style="color:#66d9ef">boolean</span>];
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">person</span>: <span style="color:#66d9ef">Tuple</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;John&#34;</span>, <span style="color:#a6e22e">age</span>: <span style="color:#66d9ef">35</span> };
+</span></span><span style="display:flex;"><span>Object.<span style="color:#a6e22e">entries</span>(<span style="color:#a6e22e">person</span>).<span style="color:#a6e22e">forEach</span>(([<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>]) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">value</span>);
+</span></span><span style="display:flex;"><span>}); <span style="color:#75715e">// type Tuple = [string, boolean] ,note that useState returns tupple
+</span></span></span></code></pre></div><h3 id="generics">Generics<a hidden class="anchor" aria-hidden="true" href="#generics">#</a></h3>
+<p>Generics enable you to create reusable components that can work with any data type. The <!-- raw HTML omitted --> is an example of a generic type.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">input</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">querySelector</span>&lt;<span style="color:#f92672">HTMLInputElement</span>&gt;(<span style="color:#e6db74">&#34;.input&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">input</span>);
+</span></span></code></pre></div><p>With functions, generics allow for flexibility:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getSecond</span>&lt;<span style="color:#f92672">T</span>&gt;(<span style="color:#a6e22e">array</span>: <span style="color:#66d9ef">T</span>[])<span style="color:#f92672">:</span> <span style="color:#a6e22e">T</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">array</span>[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]; <span style="color:#75715e">// returns 2 (T is number)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;a&#34;</span>, <span style="color:#e6db74">&#34;b&#34;</span>, <span style="color:#e6db74">&#34;c&#34;</span>]; <span style="color:#75715e">// returns b (T is string)
+</span></span></span></code></pre></div><p>A practical use case for generics is in API responses:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">APIResponse</span>&lt;<span style="color:#f92672">TData</span>&gt; <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span>: <span style="color:#66d9ef">TData</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">error</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">APIResponse</span>&lt;<span style="color:#f92672">Array</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">number</span>&gt;<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], <span style="color:#a6e22e">isError</span>: <span style="color:#66d9ef">false</span> };
+</span></span></code></pre></div><h3 id="async-functions">Async Functions<a hidden class="anchor" aria-hidden="true" href="#async-functions">#</a></h3>
+<p>TypeScript can infer return types for async functions, making code cleaner and more readable.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">wait</span>(<span style="color:#a6e22e">duration</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>&lt;<span style="color:#f92672">string</span>&gt;((<span style="color:#a6e22e">res</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setTimeout</span>(() <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">res</span>(<span style="color:#e6db74">&#34;hi!&#34;</span>), <span style="color:#a6e22e">duration</span>);
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">wait</span>(<span style="color:#ae81ff">1000</span>).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">value</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h2 id="build-in-types">Build in Types<a hidden class="anchor" aria-hidden="true" href="#build-in-types">#</a></h2>
+<p>TypeScript provides built-in utility types like Omit, Pick, Partial, and Required to manipulate types easily.</p>
+<h3 id="omit-and-pick">Omit and Pick<a hidden class="anchor" aria-hidden="true" href="#omit-and-pick">#</a></h3>
+<p>To create a new type based on an existing one, you can use Pick or Omit:</p>
+<p><code>type NewTodo = Pick&lt;Todo, &quot;name&quot; | &quot;completed&quot;&gt;</code>
+<code>type NewTodo = Omit&lt;Todo, &quot;id&quot;&gt;</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Todo</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>:<span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>:<span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">completed</span>:<span style="color:#66d9ef">boolean</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">NewTodo</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span>:<span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">completed</span>:<span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">saveTodo</span>(<span style="color:#a6e22e">newTodo</span>: <span style="color:#66d9ef">NewTodo</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> {...<span style="color:#a6e22e">newTodo</span>, <span style="color:#a6e22e">id</span>:<span style="color:#66d9ef">crypto.randomUUID</span>()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="partial-and-required">Partial and Required<a hidden class="anchor" aria-hidden="true" href="#partial-and-required">#</a></h3>
+<p>To make properties optional or required:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Todo</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">title?</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">completed</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">address</span><span style="color:#f92672">?:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">street?</span>: <span style="color:#66d9ef">street</span>;
+</span></span><span style="display:flex;"><span>  };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">RequiredPick</span>&lt;<span style="color:#f92672">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">Key</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">keyof</span> <span style="color:#a6e22e">T</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">Required</span>&lt;<span style="color:#f92672">Pick</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">Key</span>&gt;<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">T</span>; <span style="color:#75715e">// we pick one of the keys from Todo type and make it required, lastly make it union with Todo but required overwrites so this code makes generic picked type as required.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FormTodo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">RequiredPick</span>&lt;<span style="color:#f92672">Todo</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">title</span><span style="color:#960050;background-color:#1e0010">&#34;</span>&gt;; <span style="color:#75715e">// now title is require, it is not optional anymore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">PartialPick</span>&lt;<span style="color:#f92672">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">Key</span> <span style="color:#a6e22e">extends</span> <span style="color:#a6e22e">keyof</span> <span style="color:#a6e22e">T</span>&gt; <span style="color:#f92672">=</span> <span style="color:#a6e22e">Partial</span>&lt;<span style="color:#f92672">Pick</span><span style="color:#960050;background-color:#1e0010">&lt;</span><span style="color:#a6e22e">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">Key</span>&gt;<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span> <span style="color:#a6e22e">Omit</span>&lt;<span style="color:#f92672">T</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">Key</span>&gt;; <span style="color:#75715e">// we pick one key and make it partial, lastly we union with all of the keys but it would overwrite required so we omit the specific key before unioning
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FormTodo2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PartialPick</span>&lt;<span style="color:#f92672">Todo</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#a6e22e">completed</span><span style="color:#960050;background-color:#1e0010">&#34;</span>&gt;; <span style="color:#75715e">// now completed is optional
+</span></span></span></code></pre></div><h3 id="returntype-and-parameters">ReturnType and Parameters<a hidden class="anchor" aria-hidden="true" href="#returntype-and-parameters">#</a></h3>
+<p>TypeScript allows you to extract the return type of a function or its parameters using ReturnType and Parameters.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Func</span> <span style="color:#f92672">=</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ReturnTypeOfFunc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ReturnType</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">Func</span>&gt; <span style="color:#75715e">//
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">checkLength</span>(<span style="color:#a6e22e">a</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">b</span>: <span style="color:#66d9ef">number</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">length</span>() <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">b</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ParamsOfCheckLen</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Parameters</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">CheckLength</span>&gt;; <span style="color:#75715e">// [a:string, b:number] // a tupple
+</span></span></span></code></pre></div><h3 id="record">Record<a hidden class="anchor" aria-hidden="true" href="#record">#</a></h3>
+<p>The Record type is useful for creating objects with specific keys and values.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">PeopleGroupByName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Record</span>&lt;<span style="color:#f92672">Person</span><span style="color:#960050;background-color:#1e0010">[&#34;</span><span style="color:#a6e22e">name</span><span style="color:#960050;background-color:#1e0010">&#34;],</span> <span style="color:#a6e22e">Person</span><span style="color:#960050;background-color:#1e0010">[]</span>&gt;;
+</span></span></code></pre></div><h3 id="readonly">Readonly<a hidden class="anchor" aria-hidden="true" href="#readonly">#</a></h3>
+<p>The Readonly type creates immutable versions of existing types.
+This is basically same <strong><em>as const</em></strong> but readonly can be used for creating another type.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">FinalTodo</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Readonly</span>&lt;<span style="color:#f92672">Todo</span>&gt;;
+</span></span></code></pre></div><h2 id="type-narrowing">Type Narrowing<a hidden class="anchor" aria-hidden="true" href="#type-narrowing">#</a></h2>
+<p>Type narrowing allows for more precise type checking in your code. Basic type guards help differentiate types effectively.</p>
+<h3 id="basic-type-guards">Basic Type Guards<a hidden class="anchor" aria-hidden="true" href="#basic-type-guards">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Todo</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">titles</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">property</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;High&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Normal&#34;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Low&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">isComplete</span>: <span style="color:#66d9ef">boolean</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description?</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dueDate</span>: <span style="color:#66d9ef">Date</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extendTodo</span>(<span style="color:#a6e22e">todo</span>: <span style="color:#66d9ef">Todo</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">dueDate</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;string&#34;</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// or todo.dueDate instanceof Date
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">dueDate</span>.<span style="color:#a6e22e">getDate</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>checking undefined is possible with <strong>?</strong>. Below code is equivalent to <code>todo.description?.length &gt; 5</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">description</span> <span style="color:#f92672">!==</span> <span style="color:#66d9ef">undefined</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">todo</span>.<span style="color:#a6e22e">description</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e">// length is not exist but it will not give error since we check if it is undefined but this is possible with todo.description?.length &gt; 5
+</span></span></span></code></pre></div><ul>
+<li>This <strong>!</strong> also tell tsc that it is not possible be to be null but it overwrites typescript</li>
+</ul>
+<h3 id="discriminated-union">Discriminated Union<a hidden class="anchor" aria-hidden="true" href="#discriminated-union">#</a></h3>
+<p>Discriminated unions simplify handling different types:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">SuccessResponse</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Success&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>; <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">string</span> };
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">ErrorResponse</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">status</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Error&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">errorMessage</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">UserApiResponse</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SuccessResponse</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">ErrorResponse</span>;
+</span></span></code></pre></div><h3 id="function-overloads">Function Overloads<a hidden class="anchor" aria-hidden="true" href="#function-overloads">#</a></h3>
+<p>Function overloads allow you to define multiple ways to call a function based on different input types.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">nums</span>:<span style="color:#66d9ef">number</span>[])<span style="color:#f92672">:</span><span style="color:#66d9ef">number</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sum</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">a</span>:<span style="color:#66d9ef">number</span>,<span style="color:#a6e22e">b</span>:<span style="color:#66d9ef">number</span>)<span style="color:#f92672">:</span><span style="color:#66d9ef">number</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">t1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>([<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">22</span>]);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">t2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">22</span>);
+</span></span></code></pre></div><h3 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h3>
+<p>Understanding advanced types in TypeScript enhances code quality and maintainability. By leveraging features like as const, generics, utility types, and type narrowing, developers can write more robust and error-resistant applications. Embrace these tools to improve your TypeScript skills!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/typescript/">Typescript</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Functor Fungi</a></span>
+       
+   
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Aug 2024 14:38:39 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 22 Sep 2024 17:21:02 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Typescript</title>
+      <link>http://localhost:1313/posts/typescript/</link>
+      <pubDate>Sun, 22 Sep 2024 17:21:02 -0400</pubDate>
+      <guid>http://localhost:1313/posts/typescript/</guid>
+      <description>Typescript</description>
+    </item>
     <item>
       <title>How to Build Hugo Website</title>
       <link>http://localhost:1313/posts/how-to-build-hugo-website/</link>
