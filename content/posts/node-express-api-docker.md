@@ -3,7 +3,7 @@ title: "Setting Up a Simple API with Node.js, Express, PostgreSQL, and Docker"
 date: 2024-09-23T13:33:34-04:00
 author: ["Ozan"]
 categories: ["programming"]
-tags: ["node,express,postgresql,docker"]
+tags: ["node, express, postgresql, docker"]
 description: "Node Express Api Docker"
 weight: 1
 slug: ""
@@ -169,7 +169,7 @@ Use the following command to access the PostgreSQL shell:
 docker exec -it express-postgres-api-db-1 psql -U pguser -d pgdb
 ```
 
-1. Create the items table and basic queries:
+3. Create the items table and basic queries:
 
 Execute the following SQL commands:
 

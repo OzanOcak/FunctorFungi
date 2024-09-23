@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Setting Up a Simple API with Node.js, Express, PostgreSQL, and Docker | Functor Fungi</title>
-<meta name="keywords" content="node,express,postgresql,docker">
+<meta name="keywords" content="node, express, postgresql, docker">
 <meta name="description" content="Node Express Api Docker">
 <meta name="author" content="Ozan">
 <link rel="canonical" href="https://functorfungi.netlify.app/posts/node-express-api-docker/">
@@ -100,7 +100,7 @@
   "name": "Setting Up a Simple API with Node.js, Express, PostgreSQL, and Docker",
   "description": "Node Express Api Docker",
   "keywords": [
-    "node,express,postgresql,docker"
+    "node, express, postgresql, docker"
   ],
   "articleBody": "In this article, we will walk through the steps to create a simple RESTful API using Node.js with Express, backed by a PostgreSQL database, all running in Docker containers. This setup allows for easy development and deployment, ensuring consistency across environments.\nStep 1: Set Up Your Project Create a project directory:\nmkdir express-postgres-api cd express-postgres-api Initialize a Node.js project:\nnpm init -y npm install express pg dotenv npm i -D nodemon cat package.json Step 2: Create the Express Application Create a new file named app.js: // app.js const express = require(\"express\"); const { Pool } = require(\"pg\"); const dotenv = require(\"dotenv\"); dotenv.config(); const app = express(); const port = process.env.PORT || 3000; // Middleware app.use(express.json()); // PostgreSQL connection const pool = new Pool({ user: process.env.DB_USER, host: process.env.DB_HOST, database: process.env.DB_NAME, password: process.env.DB_PASSWORD, port: process.env.DB_PORT, }); // Basic route app.get(\"/\", (req, res) =\u003e { res.send(\"Hello World!\"); }); // Get all items app.get(\"/items\", async (req, res) =\u003e { try { const result = await pool.query(\"SELECT * FROM items\"); res.json(result.rows); } catch (err) { console.error(err); res.status(500).send(\"Server error\"); } }); // Start the server app.listen(port, () =\u003e { console.log(`Server running on http://localhost:${port}`); }); Create a .env file: In the project root, create a .env file to store your database configuration:\nDB_USER=pguser DB_HOST=db DB_NAME=pgdb DB_PASSWORD=pgpassword DB_PORT=5432 PORT=3000 Step 3: Create Docker Setup Next, we’ll configure Docker to run our application and database.\ndockerfile FROM node:14 WORKDIR /usr/src/app COPY package*.json ./ RUN npm install COPY . . CMD [\"npm\", \"run\", \"dev\"] docker-compose.yml This file will define the services for both the API and the PostgreSQL database:\n#version: \"3.8\" services: db: image: postgres:alpine environment: POSTGRES_USER: ${DB_USER} POSTGRES_PASSWORD: ${DB_PASSWORD} POSTGRES_DB: ${DB_NAME} ports: - \"5432:5432\" volumes: - pgdata:/var/lib/postgresql/data api: build: . ports: - \"3000:3000\" environment: - DB_USER=${DB_USER} - DB_HOST=${DB_HOST} - DB_NAME=${DB_NAME} - DB_PASSWORD=${DB_PASSWORD} - DB_PORT=${DB_PORT} depends_on: - db volumes: pgdata: Step 4: Create the Database Table Launch the Docker containers: docker compose up -d docker compose down # stopping the containers docker compose --build # re-building containers after any change is done Connect to the PostgreSQL container: Use the following command to access the PostgreSQL shell:\ndocker exec -it {db_container_name} psql -U {user_name} -d {db_name} docker exec -it express-postgres-api-db-1 psql -U pguser -d pgdb Create the items table and basic queries: Execute the following SQL commands:\nCREATE TABLE items ( id SERIAL PRIMARY KEY, name VARCHAR(100) NOT NULL ); insert into items (1, 'tom'); select * from items; Step 5: Testing the API Now, let’s test our API to ensure everything is working as expected. We will use curl.\ndocker compose -d up curl http://localhost:3000 curl http://localhost:3000/items Conclusion In this tutorial, we successfully set up a simple RESTful API using Node.js, Express, and PostgreSQL, all running within Docker containers. This setup simplifies the development process and ensures that the application behaves consistently across different environments.\n",
   "wordCount" : "465",
@@ -362,7 +362,7 @@
 <li>docker exec -it {db_container_name} psql -U {user_name} -d {db_name}</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker exec -it express-postgres-api-db-1 psql -U pguser -d pgdb
-</span></span></code></pre></div><ol>
+</span></span></code></pre></div><ol start="3">
 <li>Create the items table and basic queries:</li>
 </ol>
 <p>Execute the following SQL commands:</p>
@@ -387,7 +387,7 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://functorfungi.netlify.app/tags/nodeexpresspostgresqldocker/">Node,express,postgresql,docker</a></li>
+      <li><a href="https://functorfungi.netlify.app/tags/node-express-postgresql-docker/">Node, Express, Postgresql, Docker</a></li>
     </ul>
   </footer>
 </article>
