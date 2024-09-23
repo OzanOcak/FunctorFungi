@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Typescript | Functor Fungi</title>
+<title>Understanding Advanced Types in TypeScript | Functor Fungi</title>
 <meta name="keywords" content="typescript">
 <meta name="description" content="Typescript">
 <meta name="author" content="Ozan">
@@ -58,7 +58,7 @@
 </noscript>
   
 
-<meta property="og:title" content="Typescript" />
+<meta property="og:title" content="Understanding Advanced Types in TypeScript" />
 <meta property="og:description" content="Typescript" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://functorfungi.netlify.app/posts/typescript/" />
@@ -68,7 +68,7 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://functorfungi.netlify.app/img/posts/typescript/typescript.png" />
-<meta name="twitter:title" content="Typescript"/>
+<meta name="twitter:title" content="Understanding Advanced Types in TypeScript"/>
 <meta name="twitter:description" content="Typescript"/>
 
 
@@ -86,7 +86,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Typescript",
+      "name": "Understanding Advanced Types in TypeScript",
       "item": "https://functorfungi.netlify.app/posts/typescript/"
     }
   ]
@@ -96,14 +96,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Typescript",
-  "name": "Typescript",
+  "headline": "Understanding Advanced Types in TypeScript",
+  "name": "Understanding Advanced Types in TypeScript",
   "description": "Typescript",
   "keywords": [
     "typescript"
   ],
-  "articleBody": "Understanding Advanced Types in TypeScript Advanced Types TypeScript offers a robust type system that helps developers catch errors early and improve code quality. One of the powerful features of TypeScript is its advanced types, which include constructs like as const, tuples, generics, and built-in types. In this post, we’ll explore these concepts with code snippets for clarity.\nAs Const The as const assertion allows you to create immutable types. For example, while a normal variable can be mutable, using as const makes its properties read-only. This is particularly useful when creating enums or constant values.\nlet a: number = 4; // a is mutable const b = 5; // b is not mutable const c = 5 as const; // this is what actually happens behind the sceen const num = [\"1\", \"2\", \"3\"] as const; // num.push('4') is still valid witout as const const object = { name: \"\", age: 35, adress: { street: \"\" } } as const; // as const make every property as read only This can be effective for creating enums:\nconst LEVELS = [\"begginer\", \"intermadiate\", \"advanced\"] as const; // type LEVELS = ['begginer' | 'intermadiate'| 'advanced' } type Person = { skillLevel: (typeof LEVELS)[number] }; // can be assigned to variable LEVELS.forEach((level) =\u003e console.log(level)); // this can be iterated unlice type Tuples Tuples are fixed-length arrays with specific types. They can be useful for representing structured data.\ntype Tuple = [string, boolean]; const person: Tuple = { name: \"John\", age: 35 }; Object.entries(person).forEach(([key, value]) =\u003e { console.log(key, value); }); // type Tuple = [string, boolean] ,note that useState returns tupple Generics Generics enable you to create reusable components that can work with any data type. The is an example of a generic type.\nconst input = document.querySelector\u003cHTMLInputElement\u003e(\".input\"); console.log(input); With functions, generics allow for flexibility:\nfunction getSecond\u003cT\u003e(array: T[]): T { array[1]; } const a = [1, 2, 3]; // returns 2 (T is number) const b = [\"a\", \"b\", \"c\"]; // returns b (T is string) A practical use case for generics is in API responses:\ntype APIResponse\u003cTData\u003e = { data: TData; error: boolean; }; const a: APIResponse\u003cArray\u003cnumber\u003e\u003e = { data: [1, 2, 3], isError: false }; Async Functions TypeScript can infer return types for async functions, making code cleaner and more readable.\nfunction wait(duration: number) { return new Promise\u003cstring\u003e((res) =\u003e { setTimeout(() =\u003e res(\"hi!\"), duration); }); } wait(1000).then((value) =\u003e { console.log(value.length); }); Build in Types TypeScript provides built-in utility types like Omit, Pick, Partial, and Required to manipulate types easily.\nOmit and Pick To create a new type based on an existing one, you can use Pick or Omit:\ntype NewTodo = Pick",
-  "wordCount" : "947",
+  "articleBody": "Advanced Types TypeScript offers a robust type system that helps developers catch errors early and improve code quality. One of the powerful features of TypeScript is its advanced types, which include constructs like as const, tuples, generics, and built-in types. In this post, we’ll explore these concepts with code snippets for clarity.\nAs Const The as const assertion allows you to create immutable types. For example, while a normal variable can be mutable, using as const makes its properties read-only. This is particularly useful when creating enums or constant values.\nlet a: number = 4; // a is mutable const b = 5; // b is not mutable const c = 5 as const; // this is what actually happens behind the sceen const num = [\"1\", \"2\", \"3\"] as const; // num.push('4') is still valid witout as const const object = { name: \"\", age: 35, adress: { street: \"\" } } as const; // as const make every property as read only This can be effective for creating enums:\nconst LEVELS = [\"begginer\", \"intermadiate\", \"advanced\"] as const; // type LEVELS = ['begginer' | 'intermadiate'| 'advanced' } type Person = { skillLevel: (typeof LEVELS)[number] }; // can be assigned to variable LEVELS.forEach((level) =\u003e console.log(level)); // this can be iterated unlice type Tuples Tuples are fixed-length arrays with specific types. They can be useful for representing structured data.\ntype Tuple = [string, boolean]; const person: Tuple = { name: \"John\", age: 35 }; Object.entries(person).forEach(([key, value]) =\u003e { console.log(key, value); }); // type Tuple = [string, boolean] ,note that useState returns tupple Generics Generics enable you to create reusable components that can work with any data type. The is an example of a generic type.\nconst input = document.querySelector\u003cHTMLInputElement\u003e(\".input\"); console.log(input); With functions, generics allow for flexibility:\nfunction getSecond\u003cT\u003e(array: T[]): T { array[1]; } const a = [1, 2, 3]; // returns 2 (T is number) const b = [\"a\", \"b\", \"c\"]; // returns b (T is string) A practical use case for generics is in API responses:\ntype APIResponse\u003cTData\u003e = { data: TData; error: boolean; }; const a: APIResponse\u003cArray\u003cnumber\u003e\u003e = { data: [1, 2, 3], isError: false }; Async Functions TypeScript can infer return types for async functions, making code cleaner and more readable.\nfunction wait(duration: number) { return new Promise\u003cstring\u003e((res) =\u003e { setTimeout(() =\u003e res(\"hi!\"), duration); }); } wait(1000).then((value) =\u003e { console.log(value.length); }); Build in Types TypeScript provides built-in utility types like Omit, Pick, Partial, and Required to manipulate types easily.\nOmit and Pick To create a new type based on an existing one, you can use Pick or Omit:\ntype NewTodo = Pick",
+  "wordCount" : "942",
   "inLanguage": "en",
   "image":"https://functorfungi.netlify.app/img/posts/typescript/typescript.png","datePublished": "2024-09-22T17:21:02-04:00",
   "dateModified": "2024-09-22T17:21:02-04:00",
@@ -201,7 +201,7 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://functorfungi.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://functorfungi.netlify.app/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Typescript
+      Understanding Advanced Types in TypeScript
     </h1>
     <div class="post-description">
       Typescript
@@ -219,9 +219,6 @@
         </summary>
 
         <div class="inner"><ul>
-                <li>
-                    <a href="#understanding-advanced-types-in-typescript" aria-label="Understanding Advanced Types in TypeScript">Understanding Advanced Types in TypeScript</a><ul>
-                        
                 <li>
                     <a href="#advanced-types" aria-label="Advanced Types">Advanced Types</a><ul>
                         
@@ -263,14 +260,11 @@
             </ul>
             </li>
             </ul>
-            </li>
-            </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h1 id="understanding-advanced-types-in-typescript">Understanding Advanced Types in TypeScript<a hidden class="anchor" aria-hidden="true" href="#understanding-advanced-types-in-typescript">#</a></h1>
-<h2 id="advanced-types">Advanced Types<a hidden class="anchor" aria-hidden="true" href="#advanced-types">#</a></h2>
+  <div class="post-content"><h2 id="advanced-types">Advanced Types<a hidden class="anchor" aria-hidden="true" href="#advanced-types">#</a></h2>
 <p>TypeScript offers a robust type system that helps developers catch errors early and improve code quality. One of the powerful features of TypeScript is its advanced types, which include constructs like as const, tuples, generics, and built-in types. In this post, we’ll explore these concepts with code snippets for clarity.</p>
 <h3 id="as-const">As Const<a hidden class="anchor" aria-hidden="true" href="#as-const">#</a></h3>
 <p>The as const assertion allows you to create immutable types. For example, while a normal variable can be mutable, using as const makes its properties read-only. This is particularly useful when creating enums or constant values.</p>

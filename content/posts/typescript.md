@@ -1,5 +1,5 @@
 ---
-title: "Typescript"
+title: "Understanding Advanced Types in TypeScript"
 date: 2024-09-22T17:21:02-04:00
 author: ["Ozan"]
 categories: ["programming"]
@@ -15,8 +15,6 @@ cover:
   relative: false
 showToc: true # show the table of content22
 ---
-
-# Understanding Advanced Types in TypeScript
 
 ## Advanced Types
 

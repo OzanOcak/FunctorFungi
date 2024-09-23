@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://functorfungi.netlify.app/posts/node-express-api-docker/</loc>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
+  </url><url>
     <loc>https://functorfungi.netlify.app/posts/typescript/</loc>
     <lastmod>2024-09-22T17:21:02-04:00</lastmod>
   </url><url>
@@ -15,19 +18,22 @@
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/categories/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/nodeexpresspostgresqldocker/</loc>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/posts/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/categories/programming/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/tags/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/tags/typescript/</loc>
     <lastmod>2024-09-22T17:21:02-04:00</lastmod>
