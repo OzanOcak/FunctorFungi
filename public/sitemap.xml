@@ -20,10 +20,19 @@
     <loc>https://functorfungi.netlify.app/categories/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
+    <loc>https://functorfungi.netlify.app/tags/docker/</loc>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/express/</loc>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
+  </url><url>
     <loc>https://functorfungi.netlify.app/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/node-express-postgresql-docker/</loc>
+    <loc>https://functorfungi.netlify.app/tags/node/</loc>
+    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/postgresql/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>https://functorfungi.netlify.app/posts/</loc>

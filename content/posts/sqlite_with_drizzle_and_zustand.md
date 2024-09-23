@@ -3,7 +3,7 @@ title: "Sqlite_with_drizzle_and_zustand"
 date: 2024-08-20T22:22:11-04:00
 author: ["Ozan"]
 categories: ["programming"]
-tags: ["sqlite, zustand, drizzle orm"]
+tags: ["sqlite", "zustand", "drizzle orm"]
 description: "Sqlite_with_drizzle_and_zustand"
 weight: 1
 slug: ""

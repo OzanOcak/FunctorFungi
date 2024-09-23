@@ -1,9 +1,9 @@
 ---
-title: "Setting Up a Simple API with Node.js, Express, PostgreSQL, and Docker"
+title: "Setting Up a Simple Node.js Express Api and PostgreSql database with Docker"
 date: 2024-09-23T13:33:34-04:00
 author: ["Ozan"]
 categories: ["programming"]
-tags: ["node, express, postgresql, docker"]
+tags: ["node", "express", "postgresql", "docker"]
 description: "Node Express Api Docker"
 weight: 1
 slug: ""

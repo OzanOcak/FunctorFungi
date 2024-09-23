@@ -3,3 +3,22 @@ This is just a placeholder blank stylesheet so as to support adding custom style
 
 Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
 */
+
+/*list.html*/
+.grid-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding-left: auto;
+  padding-right: auto;
+}
+@media screen and (max-width: 990px) {
+  .post-entry {
+    min-width: 49%;
+  }
+}
+@media screen and (max-width: 653px) {
+  .post-entry {
+    min-width: 100%;
+  }
+}
