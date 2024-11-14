@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>React on Functor Fungi</title>
-    <link>http://localhost:1313/tags/react/</link>
+    <link>https://functorfungi.netlify.app/tags/react/</link>
     <description>Recent content in React on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 01 Oct 2024 10:43:30 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://functorfungi.netlify.app/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Understanding React Router: A Comprehensive Guide to createBrowserRouter</title>
-      <link>http://localhost:1313/posts/react-router/</link>
+      <title>Understanding React Router: Complete Guide to createBrowserRouter</title>
+      <link>https://functorfungi.netlify.app/posts/react-router/</link>
       <pubDate>Tue, 01 Oct 2024 10:43:30 -0400</pubDate>
-      <guid>http://localhost:1313/posts/react-router/</guid>
+      <guid>https://functorfungi.netlify.app/posts/react-router/</guid>
       <description>React Router with createBrowserRouter</description>
     </item>
     <item>
       <title>Building Personal Website With Next and React</title>
-      <link>http://localhost:1313/projects/building-personal-website-with-next-and-react/</link>
+      <link>https://functorfungi.netlify.app/projects/building-personal-website-with-next-and-react/</link>
       <pubDate>Mon, 19 Aug 2024 22:53:13 -0400</pubDate>
-      <guid>http://localhost:1313/projects/building-personal-website-with-next-and-react/</guid>
+      <guid>https://functorfungi.netlify.app/projects/building-personal-website-with-next-and-react/</guid>
       <description>Building Personal Website With Next and React</description>
     </item>
   </channel>

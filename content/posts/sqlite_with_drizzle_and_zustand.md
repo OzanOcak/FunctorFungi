@@ -9,9 +9,9 @@ weight: 1
 slug: ""
 draft: true # show the page
 cover:
-  image: "/img/posts/sqlite_with_drizzle_and_zustand/database_drizzle.png"
-  caption: "drizzling on databases"
-  alt: "drizzling on databases"
+  image: "/img/posts/4.png"
+  caption: ""
+  alt: "Abstract Image"
   relative: false
 showToc: true # show the table of content22
 ---

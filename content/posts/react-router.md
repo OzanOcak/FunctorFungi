@@ -1,5 +1,5 @@
 ---
-title: "Understanding React Router: A Comprehensive Guide to createBrowserRouter"
+title: "Understanding React Router: Complete Guide to createBrowserRouter"
 date: 2024-10-01T10:43:30-04:00
 author: ["Ozan"]
 categories: ["programming"]
@@ -9,9 +9,9 @@ weight: 1
 slug: "react-router"
 draft: false # show the page
 cover:
-  image: "/img/posts/react-router/react-router.png"
-  caption: "image of road signs"
-  alt: "image of road signs"
+  image: "/img/posts/3.png"
+  caption: ""
+  alt: "Abstract Image"
   relative: false
 showToc: true # show the table of content22
 ---

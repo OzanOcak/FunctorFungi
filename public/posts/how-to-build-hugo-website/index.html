@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>How to Build Hugo Website | Functor Fungi</title>
 <meta name="keywords" content="hugo">
 <meta name="description" content="How to Build Hugo Website">
 <meta name="author" content="Ozan">
-<link rel="canonical" href="http://localhost:1313/posts/how-to-build-hugo-website/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6f8e8bbfe5fa9ad81c3f31194111efa7793d2d47c2433d7217a7796ae758336a.css" integrity="sha256-b46Lv&#43;X6mtgcPzEZQRHvp3k9LUfCQz1yF6d5audYM2o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://functorfungi.netlify.app/posts/how-to-build-hugo-website/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fbb87958984962319e2ee793c41502ed8d6f6d6bccad4d0be2ba9c4f82f0e08c.css" integrity="sha256-&#43;7h5WJhJYjGeLueTxBUC7Y1vbWvMrU0L4rqcT4Lw4Iw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://functorfungi.netlify.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://functorfungi.netlify.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://functorfungi.netlify.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://functorfungi.netlify.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://functorfungi.netlify.app/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/how-to-build-hugo-website/">
+<link rel="alternate" hreflang="en" href="https://functorfungi.netlify.app/posts/how-to-build-hugo-website/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,6 +56,75 @@
 
     </style>
 </noscript>
+  
+
+<meta property="og:title" content="How to Build Hugo Website" />
+<meta property="og:description" content="How to Build Hugo Website" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://functorfungi.netlify.app/posts/how-to-build-hugo-website/" />
+<meta property="og:image" content="https://functorfungi.netlify.app/img/posts/1.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-08-19T14:38:39-04:00" />
+<meta property="article:modified_time" content="2024-08-19T14:38:39-04:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://functorfungi.netlify.app/img/posts/1.png" />
+<meta name="twitter:title" content="How to Build Hugo Website"/>
+<meta name="twitter:description" content="How to Build Hugo Website"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://functorfungi.netlify.app/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "How to Build Hugo Website",
+      "item": "https://functorfungi.netlify.app/posts/how-to-build-hugo-website/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Build Hugo Website",
+  "name": "How to Build Hugo Website",
+  "description": "How to Build Hugo Website",
+  "keywords": [
+    "hugo"
+  ],
+  "articleBody": "Setting Up Hugo We need brew, go, git and hugo to build a Hugo website. I assume we already have bre and git are installed in our operating system.\nbrew install go go version brew install hugo hugo version hugo new site myspace code . Create Custom Layout Create a markdown file named as _index.md under content folder\n--- title: Home --- Hello World!!! and about.md with title: About then create default layout as baseof.html under /layouts/_default/ folder\n\u003c!DOCTYPE html\u003e \u003chtml lang=\"en\"\u003e \u003chead\u003e \u003cmeta charset=\"UTF-8\" /\u003e \u003cmeta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /\u003e \u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" /\u003e \u003ctitle\u003e{{.Page.Title}}\u003c/title\u003e \u003c/head\u003e \u003cbody\u003e {{ block \"main\" . }} {{ end }} \u003c/body\u003e \u003c/html\u003e create two more html files under _default folder list.html for landing page and single.html for about page with below content\n{{ define \"main\"}} {{ .Content}} {{ end }} Stylesheet {{ $style := resources.Get \"sass/main.scss\" | resources.ToCSS | resources.Minify }} \u003clink rel=\"stylesheet\" href=\"{{ $style.Permalink }}\" /\u003e then create main.scss under assets/sass/ folder\nbody { width: 400px; margin: 0 auto; font-family: sans-serif; } Partials Create a file name as nav.html under /layoutes/partials/\n\u003cnav\u003e \u003cul\u003e \u003cli\u003e\u003ca href=\"/\"\u003eHome\u003c/a\u003e\u003c/li\u003e \u003cli\u003e\u003ca href=\"/about/\"\u003eAbout\u003c/a\u003e\u003c/li\u003e \u003c/ul\u003e \u003c/nav\u003e then add below line in the baseof.html\n{{ partial \"nav.html\" }} we can also create meta partial as meta.html\n\u003cmeta charset=\"utf-8\" /\u003e \u003ctitle\u003e{{ print .Page.Title }}\u003c/title\u003e {{ $style := resources.Get \"sass/main.scss\" | resources.ToCSS | resources.Minify }} \u003clink rel=\"stylesheet\" href=\"{{ $style.Permalink }}\" /\u003e then add snippet in baseof.html\n{{ partial \"meta.html\" . }} That little . at the end is passing the context of the current page, which allows the partial to print out the current page’s title.\nTemplate \u003ctitle\u003e{{ .Params.title }} | {{ .Site.title }}\u003c/title\u003e \u003cp\u003eyou can use double curly braces like this: {{ \"Hello!\" }}.\u003c/p\u003e {{ if isset .Params \"title\" }} \u003ctitle\u003e{{ .Params.title }}\u003c/title\u003e {{ else }} \u003ctitle\u003e{{ .Site.title }}\u003c/title\u003e {{ end }} {{ $favorite_food := \"Gazelle\" }} {{ $favorite_food }} {{ $best_friends := slice \"pumbaa\" \"timon\" \"nala\" \"rafiki\" }} \u003cul\u003e {{ range $best_friends }} \u003cli\u003e{{ . }}\u003c/li\u003e {{ end }} \u003c/ul\u003e to create conditiotonal templeting, enter params in config.toml or hugo.toml file\n[params] name = 'Functor' then create a footer.html partial where footer will only seen if params is exist\n{{ with .Params.hide_footer }} {{ else }} \u003cfooter\u003eWebsite made by {{ .Site.Params.name }} in {{ now.Year }}\u003c/footer\u003e {{ end }} then add the partial in baseof.html\n{{ partial \"footer.html\" . }} we can hide footer in any html page(content) adding hide_footer just below title\nhide_footer: true Creating Blog cretate a file name as _index.md under /content/posts/\n--- title: Blog --- this markdown file will follow the rules of list.html unde /layouts/_default/ folder we can create our spesific layout if we also create list.html under /layout/posts folder\n{{ define \"main\"}} {{ .Content}} {{ end }} but we can also create single.html under /layout/posts/ folder so every post will follow the rules of single.html file’s rules\n{{ define \"main\"}} {{ .Content}} {{ end }} Using Available Layouts Above we can see basic hugo structure, alternatively we can use a theme to be able to see the site\nhugo new site myspace cd myspace git init git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke echo \"theme = 'ananke'\" \u003e\u003e hugo.toml hugo server we can also use git clone instead of fit submodule add\nyou can refer from https://gohugo.io/getting-started/quick-start/ echo \"theme = 'ananke'\" \u003e\u003e hugo.toml or directly place below code to hugo.toml before running hugo server\ntheme: [\"PaperMod\"] delete draft = true or assign false to add content and publish it(files in public folder)\nhugo new content posts/my-first-post.md hugo server hugo when we created new post in terminal, the current time automatically created but if we like to create a file with default fron matter, we can add default fron matter in default.md under archtypes folder so next time when we create a file with hugo new content comment, all the fron matter will be added.\ntitle : '{{ replace .File.ContentBaseName \"-\" \" \" | title }}' date : {{ .Date }} draft : true author: [\"Ozan\"] Hugo.toml Hugo.toml is a configuration file where we can define navigation, profile module and more.\nPublishing Website to Netlify After finishing the development of vebsite we can create public directory with hugo on terminal. The public directory will contain all the html, css, javascript and static files for the website, however we will upload our files to netlify so we can delete the public directory.\nhugo rm -rf ./public/ git init touch .gitmodules We need to initialize git file to push our filese to github then later we will connect the github repository to netlify. We also need to create a .gitmodules to define the theme for git.\n[submodule \"themes/PaperMod\"] path = themes/PaperMod url = \"htps://github.com/adityatelange/hugo-PaperMod.git\" Then we can push our project to github.\nFinally we can go to Netlify and click add new site, then import existing project and then log in with desired third party application, and then we can search our project in github. You can refer here.\nbase directory = build command = hugo publish directory = public HUGO_VERSION = hugo verion in terminal\n",
+  "wordCount" : "841",
+  "inLanguage": "en",
+  "image":"https://functorfungi.netlify.app/img/posts/1.png","datePublished": "2024-08-19T14:38:39-04:00",
+  "dateModified": "2024-08-19T14:38:39-04:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Ozan"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://functorfungi.netlify.app/posts/how-to-build-hugo-website/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Functor Fungi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://functorfungi.netlify.app/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -73,7 +142,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
+            <a href="https://functorfungi.netlify.app/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -99,27 +168,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Blog">
+                <a href="https://functorfungi.netlify.app/posts/" title="Blog">
                     <span>Blog</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/projects/" title="Projects">
+                <a href="https://functorfungi.netlify.app/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://functorfungi.netlify.app/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://functorfungi.netlify.app/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://functorfungi.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -130,7 +199,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://functorfungi.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://functorfungi.netlify.app/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       How to Build Hugo Website
     </h1>
@@ -141,8 +210,8 @@
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/how-to-build-hugo-website/hugo.png" alt="picture of Edgar Allen Poe">
-        <p>Edgar Allen Poe develops a Hugo Website</p>
+<figure class="entry-cover"><img loading="eager" src="https://functorfungi.netlify.app/img/posts/1.png" alt="picture of Edgar Allen Poe">
+        
 </figure><div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
@@ -330,14 +399,14 @@ HUGO_VERSION = hugo verion in terminal</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/hugo/">Hugo</a></li>
+      <li><a href="https://functorfungi.netlify.app/tags/hugo/">Hugo</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Functor Fungi</a></span>
+        <span>&copy; 2024 <a href="https://functorfungi.netlify.app/">Functor Fungi</a></span>
        
    
 </footer>

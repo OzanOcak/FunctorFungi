@@ -1,6 +1,6 @@
 ---
-title : '{{ replace .File.ContentBaseName "-" " " | title }}'
-date : {{ .Date }}
+title: '{{ replace .File.ContentBaseName "-" " " | title }}'
+date: { { .Date } }
 author: ["Ozan"]
 categories: [""]
 tags: [""]
@@ -9,9 +9,9 @@ weight: 1
 slug: ""
 draft: false # show the page
 cover:
-    image: "/img/"
-    caption: "image of"
-    alt: "image of"
-    relative: false
+  image: "/img/"
+  caption: ""
+  alt: "Abstract Image"
+  relative: false
 showToc: true # show the table of content22
 ---

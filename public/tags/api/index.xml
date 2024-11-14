@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Api on Functor Fungi</title>
+    <link>https://functorfungi.netlify.app/tags/api/</link>
+    <description>Recent content in Api on Functor Fungi</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Nov 2024 20:00:06 -0500</lastBuildDate>
+    <atom:link href="https://functorfungi.netlify.app/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a JSON-RPC API with TypeScript and Express</title>
+      <link>https://functorfungi.netlify.app/posts/trpc/</link>
+      <pubDate>Wed, 13 Nov 2024 20:00:06 -0500</pubDate>
+      <guid>https://functorfungi.netlify.app/posts/trpc/</guid>
+      <description>Trpc</description>
+    </item>
+  </channel>
+</rss>

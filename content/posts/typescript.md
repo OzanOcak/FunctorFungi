@@ -9,9 +9,9 @@ weight: 1
 slug: ""
 draft: false # show the page
 cover:
-  image: "/img/posts/typescript/typescript.png"
-  caption: "typescript"
-  alt: "typescript"
+  image: "/img/posts/5.png"
+  caption: ""
+  alt: "Abstract Image"
   relative: false
 showToc: true # show the table of content22
 ---

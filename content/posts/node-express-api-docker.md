@@ -9,9 +9,9 @@ weight: 1
 slug: ""
 draft: false # show the page
 cover:
-  image: "/img/posts/docker/docker.png"
-  caption: "image of Docker"
-  alt: "image of Docker"
+  image: "/img/posts/2.png"
+  caption: ""
+  alt: "Abstract Image"
   relative: false
 showToc: true # show the table of content22
 ---

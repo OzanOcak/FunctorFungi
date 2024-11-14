@@ -2,86 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/react-router/</loc>
+    <loc>https://functorfungi.netlify.app/posts/trpc/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/posts/react-router/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/node-express-api-docker/</loc>
+    <loc>https://functorfungi.netlify.app/posts/node-express-api-docker/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/typescript/</loc>
+    <loc>https://functorfungi.netlify.app/posts/typescript/</loc>
     <lastmod>2024-09-22T17:21:02-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/</loc>
+    <loc>https://functorfungi.netlify.app/projects/building-mobile-app-with-expo-and-react-native/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/building-personal-website-with-next-and-react/</loc>
+    <loc>https://functorfungi.netlify.app/projects/building-personal-website-with-next-and-react/</loc>
     <lastmod>2024-08-19T22:53:13-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/how-to-build-hugo-website/</loc>
+    <loc>https://functorfungi.netlify.app/posts/how-to-build-hugo-website/</loc>
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://functorfungi.netlify.app/tags/api/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/categories/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/express/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/posts/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/categories/programming/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/trpc/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/typescript/</loc>
+    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>https://functorfungi.netlify.app/tags/react/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://functorfungi.netlify.app/tags/react-router/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/programming/</loc>
-    <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/react/</loc>
-    <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/react-router/</loc>
-    <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
+    <loc>https://functorfungi.netlify.app/tags/docker/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/express/</loc>
+    <loc>https://functorfungi.netlify.app/tags/node/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/node/</loc>
+    <loc>https://functorfungi.netlify.app/tags/postgresql/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/postgresql/</loc>
-    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/typescript/</loc>
-    <lastmod>2024-09-22T17:21:02-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/expo/</loc>
+    <loc>https://functorfungi.netlify.app/tags/expo/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/mobile-app-development/</loc>
+    <loc>https://functorfungi.netlify.app/categories/mobile-app-development/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/projects/</loc>
+    <loc>https://functorfungi.netlify.app/projects/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/react-react-native/</loc>
+    <loc>https://functorfungi.netlify.app/tags/react-react-native/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/redux/</loc>
+    <loc>https://functorfungi.netlify.app/tags/redux/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/tailwinds/</loc>
+    <loc>https://functorfungi.netlify.app/tags/tailwinds/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/next/</loc>
+    <loc>https://functorfungi.netlify.app/tags/next/</loc>
     <lastmod>2024-08-19T22:53:13-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://functorfungi.netlify.app/tags/hugo/</loc>
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://functorfungi.netlify.app/archives/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://functorfungi.netlify.app/search/</loc>
   </url>
 </urlset>

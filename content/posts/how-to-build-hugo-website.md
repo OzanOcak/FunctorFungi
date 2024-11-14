@@ -9,8 +9,8 @@ description: "How to Build Hugo Website"
 weight: 1
 slug: ""
 cover:
-  image: /img/posts/how-to-build-hugo-website/hugo.png
-  caption: "Edgar Allen Poe develops a Hugo Website"
+  image: /img/posts/1.png
+  caption: ""
   alt: "picture of Edgar Allen Poe"
   relative: false
 ---

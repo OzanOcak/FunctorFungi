@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Understanding React Router: A Comprehensive Guide to createBrowserRouter | Functor Fungi</title>
+<meta name="robots" content="index, follow">
+<title>Understanding React Router: Complete Guide to createBrowserRouter | Functor Fungi</title>
 <meta name="keywords" content="react, react-router">
 <meta name="description" content="React Router with createBrowserRouter">
 <meta name="author" content="Ozan">
-<link rel="canonical" href="http://localhost:1313/posts/react-router/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6f8e8bbfe5fa9ad81c3f31194111efa7793d2d47c2433d7217a7796ae758336a.css" integrity="sha256-b46Lv&#43;X6mtgcPzEZQRHvp3k9LUfCQz1yF6d5audYM2o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://functorfungi.netlify.app/posts/react-router/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fbb87958984962319e2ee793c41502ed8d6f6d6bccad4d0be2ba9c4f82f0e08c.css" integrity="sha256-&#43;7h5WJhJYjGeLueTxBUC7Y1vbWvMrU0L4rqcT4Lw4Iw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://functorfungi.netlify.app/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://functorfungi.netlify.app/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://functorfungi.netlify.app/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://functorfungi.netlify.app/apple-touch-icon.png">
+<link rel="mask-icon" href="https://functorfungi.netlify.app/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/react-router/">
+<link rel="alternate" hreflang="en" href="https://functorfungi.netlify.app/posts/react-router/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,6 +56,75 @@
 
     </style>
 </noscript>
+  
+
+<meta property="og:title" content="Understanding React Router: Complete Guide to createBrowserRouter" />
+<meta property="og:description" content="React Router with createBrowserRouter" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://functorfungi.netlify.app/posts/react-router/" />
+<meta property="og:image" content="https://functorfungi.netlify.app/img/posts/3.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T10:43:30-04:00" />
+<meta property="article:modified_time" content="2024-10-01T10:43:30-04:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://functorfungi.netlify.app/img/posts/3.png" />
+<meta name="twitter:title" content="Understanding React Router: Complete Guide to createBrowserRouter"/>
+<meta name="twitter:description" content="React Router with createBrowserRouter"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://functorfungi.netlify.app/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Understanding React Router: Complete Guide to createBrowserRouter",
+      "item": "https://functorfungi.netlify.app/posts/react-router/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Understanding React Router: Complete Guide to createBrowserRouter",
+  "name": "Understanding React Router: Complete Guide to createBrowserRouter",
+  "description": "React Router with createBrowserRouter",
+  "keywords": [
+    "react", "react-router"
+  ],
+  "articleBody": "React Router is an essential library for building single-page applications (SPAs) in React. It provides a robust way to manage navigation, routes, and data fetching. In this guide, we’ll explore the createBrowserRouter API, its features like loaders and actions, and how it compares to using React Query for data management. To get started, install React Router if you haven’t already: npm install react-router-dom\nWhat is createBrowserRouter? createBrowserRouter is a part of React Router that simplifies route management in your React applications. It allows you to define routes declaratively and manage complex routing scenarios with ease.\nKey Features of createBrowserRouter 1- Declarative Routing: It allows you to define routes in a more declarative manner, making your code easier to read and maintain.\nimport { createBrowserRouter, RouterProvider } from \"react-router-dom\"; import Home from \"./Home\"; import About from \"./About\"; const router = createBrowserRouter([ { path: \"/\", element: \u003cHome /\u003e, }, { path: \"/about\", element: \u003cAbout /\u003e, }, ]); function App() { return \u003cRouterProvider router={router} /\u003e; } 2- Nested Routes: It provides better support for nested routing, enabling you to create complex UIs with less boilerplate code.\nconst router = createBrowserRouter([ { path: \"/\", element: \u003cLayout /\u003e, children: [ { path: \"dashboard\", element: \u003cDashboard /\u003e, }, { path: \"settings\", element: \u003cSettings /\u003e, }, ], }, ]); 3- Data Loading: The API integrates data loading and route handling, allowing you to fetch data directly as part of the routing process. This streamlines the data-fetching strategy.\nconst router = createBrowserRouter([ { path: \"/user/:id\", element: \u003cUserProfile /\u003e, loader: async ({ params }) =\u003e { const response = await fetch(`/api/users/${params.id}`); return response.json(); }, }, ]); 4- Error Handling: It simplifies error handling by allowing you to define error boundaries at the route level, making it easier to manage errors in your application.\nconst router = createBrowserRouter([ { path: \"/dashboard\", element: \u003cDashboard /\u003e, errorElement: \u003cErrorPage /\u003e, // Custom error page component }, ]); 5- Asynchronous Routing: It supports asynchronous route loading, which helps improve performance by splitting code and loading only what is necessary for the current route.\nconst router = createBrowserRouter([ { path: \"/lazy\", element: ( \u003cReact.Suspense fallback={\u003cLoading /\u003e}\u003e \u003cLazyComponent /\u003e \u003c/React.Suspense\u003e ), }, ]); 6- Type Safety: If you’re using TypeScript, createBrowserRouter offers better type inference, reducing runtime errors and improving developer experience.\nimport { createBrowserRouter, RouteObject } from \"react-router-dom\"; const routes: RouteObject[] = [ { path: \"/\", element: \u003cHome /\u003e, }, { path: \"/about\", element: \u003cAbout /\u003e, }, ]; const router = createBrowserRouter(routes); 7- Improved Flexibility: The router can handle various routing scenarios, including redirects and route transitions, with a more flexible API.\nconst router = createBrowserRouter([ { path: \"/\", element: \u003cHome /\u003e, }, { path: \"/old-about\", redirect: \"/about\", // Redirect from old to new route }, ]); Loaders Loaders are functions that fetch data before a route is rendered\nimport { createBrowserRouter, RouterProvider } from \"react-router-dom\"; const loadUserData = async ({ params }) =\u003e { const response = await fetch(`/api/users/${params.id}`); if (!response.ok) { throw new Response(\"User not found\", { status: 404 }); } return response.json(); }; const UserProfile = ({ data }) =\u003e ( \u003cdiv\u003e \u003ch1\u003e{data.name}\u003c/h1\u003e \u003cp\u003e{data.email}\u003c/p\u003e \u003c/div\u003e ); const router = createBrowserRouter([ { path: \"/user/:id\", element: \u003cUserProfile /\u003e, loader: loadUserData, }, ]); function App() { return \u003cRouterProvider router={router} /\u003e; } Actions Actions are functions that handle form submissions and other interactions.\nconst submitUserData = async ({ request }) =\u003e { const formData = await request.formData(); const response = await fetch(\"/api/users\", { method: \"POST\", body: formData, }); if (!response.ok) { throw new Response(\"Failed to create user\", { status: 400 }); } return response.json(); }; const CreateUser = () =\u003e ( \u003cform method=\"post\" action=\"/create-user\"\u003e \u003cinput name=\"name\" placeholder=\"Name\" required /\u003e \u003cinput name=\"email\" placeholder=\"Email\" required /\u003e \u003cbutton type=\"submit\"\u003eCreate User\u003c/button\u003e \u003c/form\u003e ); const router = createBrowserRouter([ { path: \"/create-user\", element: \u003cCreateUser /\u003e, action: submitUserData, }, ]); Comparison with React Query Using React Query React Query provides advanced features like caching, background data fetching, and global state management. Here’s a brief comparison:\nPros of React React Router: Integrated with Routing: Loaders are tied directly to route definitions, making it easy to fetch data when navigating to a specific route. Simplicity: For basic data fetching needs, using loaders keeps your code straightforward by centralizing data fetching logic alongside route definitions. Automatic Data Fetching: Data is automatically fetched when navigating to a route, which can simplify the component logic. Cons of React Router: Limited Features: Loaders lack advanced features like caching, background refetching, and automatic retries that are standard in dedicated data-fetching libraries. No Global State Management: Loaders do not provide a way to manage global state or share data across multiple components without re-fetching. Less Flexibility: They are designed for fetching data on route changes, which may not cover all use cases for data fetching in a more complex application. Conclusion createBrowserRouter is a powerful addition to React Router, simplifying routing and data fetching in your applications. With features like loaders and actions, it enhances your ability to manage complex UIs effectively. While React Query provides advanced data fetching capabilities, combining both can lead to a well-structured and efficient application.\nBy understanding the strengths of each tool, you can make informed decisions on how to structure your React applications for optimal performance and maintainability.\n",
+  "wordCount" : "863",
+  "inLanguage": "en",
+  "image":"https://functorfungi.netlify.app/img/posts/3.png","datePublished": "2024-10-01T10:43:30-04:00",
+  "dateModified": "2024-10-01T10:43:30-04:00",
+  "author":[{
+    "@type": "Person",
+    "name": "Ozan"
+  }],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://functorfungi.netlify.app/posts/react-router/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Functor Fungi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://functorfungi.netlify.app/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -73,7 +142,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
+            <a href="https://functorfungi.netlify.app/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -99,27 +168,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="Blog">
+                <a href="https://functorfungi.netlify.app/posts/" title="Blog">
                     <span>Blog</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/projects/" title="Projects">
+                <a href="https://functorfungi.netlify.app/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://functorfungi.netlify.app/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://functorfungi.netlify.app/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://functorfungi.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -130,9 +199,9 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://functorfungi.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://functorfungi.netlify.app/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
-      Understanding React Router: A Comprehensive Guide to createBrowserRouter
+      Understanding React Router: Complete Guide to createBrowserRouter
     </h1>
     <div class="post-description">
       React Router with createBrowserRouter
@@ -141,8 +210,8 @@
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/react-router/react-router.png" alt="image of road signs">
-        <p>image of road signs</p>
+<figure class="entry-cover"><img loading="eager" src="https://functorfungi.netlify.app/img/posts/3.png" alt="Abstract Image">
+        
 </figure><div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
@@ -357,15 +426,15 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/react/">React</a></li>
-      <li><a href="http://localhost:1313/tags/react-router/">React-Router</a></li>
+      <li><a href="https://functorfungi.netlify.app/tags/react/">React</a></li>
+      <li><a href="https://functorfungi.netlify.app/tags/react-router/">React-Router</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="http://localhost:1313/">Functor Fungi</a></span>
+        <span>&copy; 2024 <a href="https://functorfungi.netlify.app/">Functor Fungi</a></span>
        
    
 </footer>
