@@ -10,7 +10,7 @@ slug: ""
 draft: false # show the page
 cover:
   image: "/img/posts/6.png"
-  caption: "image of"
+  caption: ""
   alt: "image of"
   relative: false
 showToc: true # show the table of content22

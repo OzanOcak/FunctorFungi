@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>Building a JSON-RPC API with TypeScript and Express | Functor Fungi</title>
 <meta name="keywords" content="typescript, express, api, trpc">
 <meta name="description" content="Trpc">
 <meta name="author" content="Ozan">
-<link rel="canonical" href="https://functorfungi.netlify.app/posts/trpc/">
+<link rel="canonical" href="http://localhost:1313/posts/trpc/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.fbb87958984962319e2ee793c41502ed8d6f6d6bccad4d0be2ba9c4f82f0e08c.css" integrity="sha256-&#43;7h5WJhJYjGeLueTxBUC7Y1vbWvMrU0L4rqcT4Lw4Iw=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://functorfungi.netlify.app/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://functorfungi.netlify.app/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://functorfungi.netlify.app/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://functorfungi.netlify.app/apple-touch-icon.png">
-<link rel="mask-icon" href="https://functorfungi.netlify.app/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://functorfungi.netlify.app/posts/trpc/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/trpc/">
 <noscript>
     <style>
         #theme-toggle,
@@ -56,75 +56,6 @@
 
     </style>
 </noscript>
-  
-
-<meta property="og:title" content="Building a JSON-RPC API with TypeScript and Express" />
-<meta property="og:description" content="Trpc" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://functorfungi.netlify.app/posts/trpc/" />
-<meta property="og:image" content="https://functorfungi.netlify.app/img/posts/6.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-11-13T20:00:06-05:00" />
-<meta property="article:modified_time" content="2024-11-13T20:00:06-05:00" />
-
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://functorfungi.netlify.app/img/posts/6.png" />
-<meta name="twitter:title" content="Building a JSON-RPC API with TypeScript and Express"/>
-<meta name="twitter:description" content="Trpc"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://functorfungi.netlify.app/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Building a JSON-RPC API with TypeScript and Express",
-      "item": "https://functorfungi.netlify.app/posts/trpc/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Building a JSON-RPC API with TypeScript and Express",
-  "name": "Building a JSON-RPC API with TypeScript and Express",
-  "description": "Trpc",
-  "keywords": [
-    "typescript", "express", "api", "trpc"
-  ],
-  "articleBody": "In this tutorial, we’ll create a simple JSON-RPC API using TypeScript and Express, leveraging the typed-rpc library for easy RPC handling. We will also create a client to interact with our API. By the end, you’ll have a fully functional API that can respond to requests.\nPrerequisites Node.js installed on your machine (version 16 or higher). Basic knowledge of TypeScript and JavaScript. Step 1: Set Up Your Project Create a new directory for your project and navigate into it:\nmkdir typed-rpc-api cd typed-rpc-api Initialize a new Node.js project:\nnpm init -y Install the required packages:\nnpm install express typed-rpc npm install --save-dev typescript @types/node @types/express ts-node Create a TypeScript configuration file named tsconfig.json:\n{ \"compilerOptions\": { \"target\": \"ESNext\", \"module\": \"Node16\", \"moduleResolution\": \"Node16\", \"strict\": true, \"esModuleInterop\": true, \"skipLibCheck\": true, \"forceConsistentCasingInFileNames\": true, \"outDir\": \"./dist\", \"rootDir\": \"./src\", \"noEmit\": true, \"allowImportingTsExtensions\": true }, \"include\": [\"src/**/*\"] } Implement the API Create the API entry point at src/api/index.ts:\nimport express from \"express\"; import { handleRpc } from \"typed-rpc/server\"; import { myService } from \"./service\"; const app = express(); app.use(express.json()); app.post(\"/api\", (req, res, next) =\u003e { handleRpc(req.body, myService) .then((result) =\u003e res.json(result)) .catch(next); }); const PORT = process.env.PORT || 3000; app.listen(PORT, () =\u003e { console.log(`Server is running on http://localhost:${PORT}`); }); Define your service in src/api/service.ts:\nexport const myService = { greet: async (name: string): Promise\u003cstring\u003e =\u003e { return `Hello, ${name}!`; }, }; export type MyService = typeof myService; Create the Client Set up the client in src/client/index.ts:\nimport { rpcClient } from \"typed-rpc\"; import type { MyService } from \"../api/service\"; const client = rpcClient\u003cMyService\u003e(\"http://localhost:3000/api\"); async function callApi() { const result = await client.greet(\"Ozan\"); console.log(result); // Output: Hello, Ozan! } callApi(); Add Scripts to package.json Update your package.json to include a start script:\n\"scripts\": { \"start\": \"ts-node src/api/index.ts\" } Run Your API Start your server:\nnpm run start Test the API using cURL: Open another terminal window and run the following command:\ncurl -X POST http://localhost:3000/api -H \"Content-Type: application/json\" -d '{ \"jsonrpc\": \"2.0\", \"method\": \"greet\", \"params\": [\"Ozan\"], \"id\": 1 }' You should receive a response like this:\n{ \"jsonrpc\": \"2.0\", \"id\": 1, \"result\": \"Hello, Ozan!\" } Advanced Usage Sending Custom Headers Clients can send custom headers using a getHeaders function:\nconst client = rpcClient\u003cMyService\u003e({ url: \"/api\", getHeaders() { return { Authorization: auth }; }, }); Tip: The getHeaders function can also be async.\nAborting Requests Abort requests by passing the Promise to client.$abort():\nconst client = rpcClient\u003cHelloService\u003e(url); const res = client.hello(\"world\"); client.$abort(res); Error Handling In case of an error, the client throws an RpcError with message, code, and optionally data. Customize errors with RpcHandlerOptions or provide an onError handler for logging.\nFor internal errors (invalid request, method not found), the error code follows the specs.\nCORS Credentials Include credentials in cross-origin requests with credentials: ‘include’.\nConclusion In this tutorial, we successfully set up a JSON-RPC API using TypeScript and Express. We created a simple service that responds to a greeting request and built a client to interact with the API. This setup can serve as a foundation for building more complex applications using RPC communication.\n",
-  "wordCount" : "506",
-  "inLanguage": "en",
-  "image":"https://functorfungi.netlify.app/img/posts/6.png","datePublished": "2024-11-13T20:00:06-05:00",
-  "dateModified": "2024-11-13T20:00:06-05:00",
-  "author":[{
-    "@type": "Person",
-    "name": "Ozan"
-  }],
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://functorfungi.netlify.app/posts/trpc/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Functor Fungi",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://functorfungi.netlify.app/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -142,7 +73,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://functorfungi.netlify.app/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
+            <a href="http://localhost:1313/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -168,27 +99,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://functorfungi.netlify.app/posts/" title="Blog">
+                <a href="http://localhost:1313/posts/" title="Blog">
                     <span>Blog</span>
                 </a>
             </li>
             <li>
-                <a href="https://functorfungi.netlify.app/projects/" title="Projects">
+                <a href="http://localhost:1313/projects/" title="Projects">
                     <span>Projects</span>
                 </a>
             </li>
             <li>
-                <a href="https://functorfungi.netlify.app/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://functorfungi.netlify.app/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://functorfungi.netlify.app/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -199,7 +130,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://functorfungi.netlify.app/">Home</a>&nbsp;»&nbsp;<a href="https://functorfungi.netlify.app/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Building a JSON-RPC API with TypeScript and Express
     </h1>
@@ -210,8 +141,8 @@
 
 </div>
   </header> 
-<figure class="entry-cover"><img loading="eager" src="https://functorfungi.netlify.app/img/posts/6.png" alt="image of">
-        <p>image of</p>
+<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/6.png" alt="image of">
+        
 </figure><div class="toc">
     <details >
         <summary accesskey="c" title="(Alt + C)">
@@ -370,17 +301,17 @@ Create a new directory for your project and navigate into it:</p>
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://functorfungi.netlify.app/tags/typescript/">Typescript</a></li>
-      <li><a href="https://functorfungi.netlify.app/tags/express/">Express</a></li>
-      <li><a href="https://functorfungi.netlify.app/tags/api/">Api</a></li>
-      <li><a href="https://functorfungi.netlify.app/tags/trpc/">Trpc</a></li>
+      <li><a href="http://localhost:1313/tags/typescript/">Typescript</a></li>
+      <li><a href="http://localhost:1313/tags/express/">Express</a></li>
+      <li><a href="http://localhost:1313/tags/api/">Api</a></li>
+      <li><a href="http://localhost:1313/tags/trpc/">Trpc</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://functorfungi.netlify.app/">Functor Fungi</a></span>
+        <span>&copy; 2024 <a href="http://localhost:1313/">Functor Fungi</a></span>
        
    
 </footer>

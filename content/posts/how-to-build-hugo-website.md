@@ -11,7 +11,7 @@ slug: ""
 cover:
   image: /img/posts/1.png
   caption: ""
-  alt: "picture of Edgar Allen Poe"
+  alt: "Abstract Image"
   relative: false
 ---
 

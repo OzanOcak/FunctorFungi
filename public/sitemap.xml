@@ -2,95 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://functorfungi.netlify.app/posts/trpc/</loc>
+    <loc>http://localhost:1313/posts/trpc/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/posts/react-router/</loc>
+    <loc>http://localhost:1313/posts/react-router/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/posts/node-express-api-docker/</loc>
+    <loc>http://localhost:1313/posts/node-express-api-docker/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/posts/typescript/</loc>
+    <loc>http://localhost:1313/posts/typescript/</loc>
     <lastmod>2024-09-22T17:21:02-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/projects/building-mobile-app-with-expo-and-react-native/</loc>
+    <loc>http://localhost:1313/projects/building-mobile-app-with-expo-and-react-native/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/projects/building-personal-website-with-next-and-react/</loc>
+    <loc>http://localhost:1313/projects/building-personal-website-with-next-and-react/</loc>
     <lastmod>2024-08-19T22:53:13-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/posts/how-to-build-hugo-website/</loc>
+    <loc>http://localhost:1313/posts/how-to-build-hugo-website/</loc>
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/api/</loc>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-11-14T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-11-14T20:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/api/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/express/</loc>
+    <loc>http://localhost:1313/tags/express/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/</loc>
+    <loc>http://localhost:1313/categories/programming/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/posts/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/categories/programming/</loc>
+    <loc>http://localhost:1313/tags/trpc/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/</loc>
+    <loc>http://localhost:1313/tags/typescript/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/trpc/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
-  </url><url>
-    <loc>https://functorfungi.netlify.app/tags/typescript/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
-  </url><url>
-    <loc>https://functorfungi.netlify.app/tags/react/</loc>
+    <loc>http://localhost:1313/tags/react/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/react-router/</loc>
+    <loc>http://localhost:1313/tags/react-router/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/docker/</loc>
+    <loc>http://localhost:1313/tags/docker/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/node/</loc>
+    <loc>http://localhost:1313/tags/node/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/postgresql/</loc>
+    <loc>http://localhost:1313/tags/postgresql/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/expo/</loc>
+    <loc>http://localhost:1313/tags/expo/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/categories/mobile-app-development/</loc>
+    <loc>http://localhost:1313/categories/mobile-app-development/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/projects/</loc>
+    <loc>http://localhost:1313/projects/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/react-react-native/</loc>
+    <loc>http://localhost:1313/tags/react-react-native/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/redux/</loc>
+    <loc>http://localhost:1313/tags/redux/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/tailwinds/</loc>
+    <loc>http://localhost:1313/tags/tailwinds/</loc>
     <lastmod>2024-08-20T16:42:20-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/next/</loc>
+    <loc>http://localhost:1313/tags/next/</loc>
     <lastmod>2024-08-19T22:53:13-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/tags/hugo/</loc>
+    <loc>http://localhost:1313/tags/hugo/</loc>
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
-    <loc>https://functorfungi.netlify.app/archives/</loc>
+    <loc>http://localhost:1313/archives/</loc>
   </url><url>
-    <loc>https://functorfungi.netlify.app/search/</loc>
+    <loc>http://localhost:1313/search/</loc>
   </url>
 </urlset>
