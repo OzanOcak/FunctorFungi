@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Api on Functor Fungi</title>
-    <link>http://localhost:1313/tags/api/</link>
-    <description>Recent content in Api on Functor Fungi</description>
+    <title>Drizzle on Functor Fungi</title>
+    <link>http://localhost:1313/tags/drizzle/</link>
+    <description>Recent content in Drizzle on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 14 Nov 2024 15:00:06 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/drizzle/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up Drizzle on an RPC Server</title>
       <link>http://localhost:1313/posts/drizzle/</link>
       <pubDate>Thu, 14 Nov 2024 15:00:06 -0500</pubDate>
       <guid>http://localhost:1313/posts/drizzle/</guid>
       <description>Drizzle</description>
-    </item>
-    <item>
-      <title>Building a JSON-RPC API with TypeScript and Express</title>
-      <link>http://localhost:1313/posts/trpc/</link>
-      <pubDate>Wed, 13 Nov 2024 20:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/trpc/</guid>
-      <description>Trpc</description>
     </item>
   </channel>
 </rss>

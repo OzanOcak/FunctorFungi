@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/posts/drizzle/</loc>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/posts/trpc/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
   </url><url>
@@ -23,26 +26,34 @@
     <loc>http://localhost:1313/posts/how-to-build-hugo-website/</loc>
     <lastmod>2024-08-19T14:38:39-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2024-11-14T20:00:06-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2024-11-14T20:00:06-05:00</lastmod>
+    <loc>http://localhost:1313/posts/x/</loc>
   </url><url>
     <loc>http://localhost:1313/tags/api/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/docker/</loc>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/drizzle/</loc>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/express/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/</loc>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/programming/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-11-13T20:00:06-05:00</lastmod>
+    <lastmod>2024-11-14T15:00:06-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/trpc/</loc>
     <lastmod>2024-11-13T20:00:06-05:00</lastmod>
@@ -55,9 +66,6 @@
   </url><url>
     <loc>http://localhost:1313/tags/react-router/</loc>
     <lastmod>2024-10-01T10:43:30-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/docker/</loc>
-    <lastmod>2024-09-23T13:33:34-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/node/</loc>
     <lastmod>2024-09-23T13:33:34-04:00</lastmod>

@@ -1,7 +1,7 @@
 ---
 title: "Setting Up Drizzle on an RPC Server"
 author: ["Ozan"]
-date: 2024-11-14T20:00:06-05:00
+date: 2024-11-14T15:00:06-05:00
 categories: ["programming"]
 tags: ["drizzle", "docker", "express", "api"]
 description: "Drizzle"
@@ -305,8 +305,9 @@ Start Docker: Spin up your PostgreSQL container:
 
 ```bash
 docker compose up -d
-Run the API: Start your API server:
 ```
+
+Run the API: Start your API server:
 
 ```bash
 npm run dev:api
