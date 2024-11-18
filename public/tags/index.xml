@@ -6,8 +6,29 @@
     <description>Recent content in Tags on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Nov 2024 15:00:06 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2024 15:00:06 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Axios</title>
+      <link>http://localhost:1313/tags/axios/</link>
+      <pubDate>Fri, 15 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:1313/tags/axios/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>React</title>
+      <link>http://localhost:1313/tags/react/</link>
+      <pubDate>Fri, 15 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:1313/tags/react/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>React-Query</title>
+      <link>http://localhost:1313/tags/react-query/</link>
+      <pubDate>Fri, 15 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:1313/tags/react-query/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Api</title>
       <link>http://localhost:1313/tags/api/</link>
@@ -48,13 +69,6 @@
       <link>http://localhost:1313/tags/typescript/</link>
       <pubDate>Wed, 13 Nov 2024 20:00:06 -0500</pubDate>
       <guid>http://localhost:1313/tags/typescript/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>React</title>
-      <link>http://localhost:1313/tags/react/</link>
-      <pubDate>Tue, 01 Oct 2024 10:43:30 -0400</pubDate>
-      <guid>http://localhost:1313/tags/react/</guid>
       <description></description>
     </item>
     <item>
