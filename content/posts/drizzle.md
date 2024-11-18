@@ -16,7 +16,7 @@ cover:
 showToc: true # show the table of content22
 ---
 
-In this blog post, we will walk through the process of setting up Drizzle ORM on a typed RPC server using PostgreSQL. We will cover the installation of necessary packages, configuration files, and how to seed the database. Let’s get started!
+In this blog post, we will walk through the process of setting up Drizzle ORM on a typed RPC server which we have built previous plog post, using PostgreSQL. We will cover the installation of necessary packages, configuration files, and how to seed the database. Let’s get started!
 
 ### Install Required Packages
 

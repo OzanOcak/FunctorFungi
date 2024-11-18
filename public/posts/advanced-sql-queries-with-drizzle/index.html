@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Advanced Sql Queries With Drizzle | Functor Fungi</title>
+<meta name="keywords" content="drizzle, docker, express, api">
+<meta name="description" content="Advanced Sql Queries With Drizzle">
+<meta name="author" content="Ozan">
+<link rel="canonical" href="http://localhost:1313/posts/advanced-sql-queries-with-drizzle/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.fbb87958984962319e2ee793c41502ed8d6f6d6bccad4d0be2ba9c4f82f0e08c.css" integrity="sha256-&#43;7h5WJhJYjGeLueTxBUC7Y1vbWvMrU0L4rqcT4Lw4Iw=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/advanced-sql-queries-with-drizzle/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Functor Fungi (Alt + H)">Functor Fungi</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/posts/" title="Blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/projects/" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Advanced Sql Queries With Drizzle
+    </h1>
+    <div class="post-description">
+      Advanced Sql Queries With Drizzle
+    </div>
+    <div class="post-meta"><span title='2024-11-14 15:00:06 -0500 EST'>November 14, 2024</span>&nbsp;·&nbsp;Ozan
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="eager" src="http://localhost:1313/img/posts/7.png" alt="Abstract Image">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#advanced-sql-queries-with-drizzle" aria-label="Advanced SQL Queries with Drizzle">Advanced SQL Queries with Drizzle</a></li>
+                <li>
+                    <a href="#execute-vs-returning" aria-label="execute() vs returning()">execute() vs returning()</a></li>
+                <li>
+                    <a href="#basic" aria-label="Basic">Basic</a><ul>
+                        
+                <li>
+                    <a href="#1-basic-select-statement" aria-label="1. Basic SELECT Statement">1. Basic SELECT Statement</a></li>
+                <li>
+                    <a href="#2-select-with-where-clause" aria-label="2. SELECT with WHERE Clause">2. SELECT with WHERE Clause</a></li>
+                <li>
+                    <a href="#3-filtering-results-with-and" aria-label="3. Filtering Results with AND">3. Filtering Results with AND</a></li>
+                <li>
+                    <a href="#4-filtering-results-with-or" aria-label="4. Filtering Results with OR">4. Filtering Results with OR</a></li>
+                <li>
+                    <a href="#5-filtering-results-with-not" aria-label="5. Filtering Results with NOT">5. Filtering Results with NOT</a></li>
+                <li>
+                    <a href="#6-sorting-results-with-order-by" aria-label="6. Sorting Results with ORDER BY">6. Sorting Results with ORDER BY</a></li>
+                <li>
+                    <a href="#7-combining-order-by-with-limit" aria-label="7. Combining ORDER BY with LIMIT">7. Combining ORDER BY with LIMIT</a></li>
+                <li>
+                    <a href="#8-sorting-with-multiple-columns" aria-label="8. Sorting with Multiple Columns">8. Sorting with Multiple Columns</a></li>
+                <li>
+                    <a href="#9-using-aggregate-functions" aria-label="9. Using Aggregate Functions">9. Using Aggregate Functions</a></li>
+                <li>
+                    <a href="#10-grouping-results-with-group-by" aria-label="10. Grouping Results with GROUP BY">10. Grouping Results with GROUP BY</a></li>
+                <li>
+                    <a href="#11-filtering-groups-with-having" aria-label="11. Filtering Groups with HAVING">11. Filtering Groups with HAVING</a></li></ul>
+                </li>
+                <li>
+                    <a href="#intermediate" aria-label="Intermediate">Intermediate</a><ul>
+                        
+                <li>
+                    <a href="#12-inner-join" aria-label="12. Inner Join">12. Inner Join</a></li>
+                <li>
+                    <a href="#13-left-join" aria-label="13. Left Join">13. Left Join</a></li>
+                <li>
+                    <a href="#14-right-join" aria-label="14. Right Join">14. Right Join</a></li>
+                <li>
+                    <a href="#15-full-outer-join" aria-label="15. Full Outer Join">15. Full Outer Join</a></li>
+                <li>
+                    <a href="#16-nested-subqueries-queries" aria-label="16. Nested Subqueries Queries">16. Nested Subqueries Queries</a></li>
+                <li>
+                    <a href="#17-correlated-subqueries" aria-label="17. Correlated Subqueries">17. Correlated Subqueries</a></li>
+                <li>
+                    <a href="#18-union" aria-label="18. UNION">18. UNION</a></li>
+                <li>
+                    <a href="#19-union-all" aria-label="19. UNION ALL">19. UNION ALL</a></li>
+                <li>
+                    <a href="#20-intersect" aria-label="20. INTERSECT">20. INTERSECT</a></li>
+                <li>
+                    <a href="#21-except" aria-label="21. EXCEPT">21. EXCEPT</a></li>
+                <li>
+                    <a href="#22-insert-statements" aria-label="22. INSERT Statements">22. INSERT Statements</a></li>
+                <li>
+                    <a href="#23-update-statements" aria-label="23. UPDATE Statements">23. UPDATE Statements</a></li>
+                <li>
+                    <a href="#24-delete-statements" aria-label="24. DELETE Statements">24. DELETE Statements</a></li>
+                <li>
+                    <a href="#25transaction" aria-label="25.Transaction">25.Transaction</a></li>
+                <li>
+                    <a href="#26savepoints" aria-label="26.Savepoints">26.Savepoints</a></li>
+                <li>
+                    <a href="#27-indexes" aria-label="27. Indexes">27. Indexes</a></li></ul>
+                </li>
+                <li>
+                    <a href="#advanced" aria-label="Advanced">Advanced</a><ul>
+                        
+                <li>
+                    <a href="#views-in-databases" aria-label="Views in Databases">Views in Databases</a><ul>
+                        
+                <li>
+                    <a href="#creating-and-using-views" aria-label="Creating and Using Views">Creating and Using Views</a></li>
+                <li>
+                    <a href="#using-a-view" aria-label="Using a View">Using a View</a></li>
+                <li>
+                    <a href="#updatable-views" aria-label="Updatable Views">Updatable Views</a></li>
+                <li>
+                    <a href="#materialized-views" aria-label="Materialized Views">Materialized Views</a></li>
+                <li>
+                    <a href="#creating-a-materialized-view" aria-label="Creating a Materialized View">Creating a Materialized View</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="advanced-sql-queries-with-drizzle">Advanced SQL Queries with Drizzle<a hidden class="anchor" aria-hidden="true" href="#advanced-sql-queries-with-drizzle">#</a></h2>
+<p>In modern web development, efficiently managing database interactions is crucial for building responsive applications. Drizzle, a powerful TypeScript ORM, provides developers with a robust toolkit for querying and observing database tables. One of its standout features is the ease of use in executing SQL queries, allowing for seamless data retrieval and manipulation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npx drizzle-kit studio
+</span></span></code></pre></div><p>To streamline your database interactions, you can utilize npx drizzle-kit studio. This tool serves as an interactive environment where you can query and observe your database tables. It simplifies the process of testing and refining your SQL queries, enabling you to visualize the data structure and understand relationships between tables more intuitively.</p>
+<p>You can also see database diagram and source code of project in <a href="https://github.com/OzanOcak/json-rpc-api">github</a></p>
+<h2 id="execute-vs-returning">execute() vs returning()<a hidden class="anchor" aria-hidden="true" href="#execute-vs-returning">#</a></h2>
+<p>When working with Drizzle, you often encounter two primary methods for executing queries: execute() and returning(). Understanding the difference between these methods is essential for effective data handling.</p>
+<p><em>execute():</em> This method is typically used for sending a query to the database and receiving the results directly. It is useful when you need to retrieve data without any specific requirements for the returned format. For example, in an API function like getUserById, you might implement it as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">getUserById</span>: <span style="color:#66d9ef">async</span> (<span style="color:#a6e22e">userId</span>: <span style="color:#66d9ef">number</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>().<span style="color:#66d9ef">from</span>(<span style="color:#a6e22e">user</span>).<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">userId</span>)).<span style="color:#a6e22e">execute</span>();
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><em>returning():</em> In contrast, returning() is employed when you want more control over the data you retrieve after performing an operation, such as an insert or update. This method allows you to specify which fields to return, providing a more tailored response based on your application&rsquo;s needs.
+By leveraging the capabilities of Drizzle and understanding these methods, you can create advanced SQL queries that enhance your application&rsquo;s performance and user experience. In the following sections, we&rsquo;ll dive deeper into practical examples and best practices for using Drizzle in your projects.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">product</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">values</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Coke&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Coca Cola&#34;</span>,
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">returning</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">description</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  });
+</span></span></code></pre></div><h2 id="basic">Basic<a hidden class="anchor" aria-hidden="true" href="#basic">#</a></h2>
+<h3 id="1-basic-select-statement">1. Basic SELECT Statement<a hidden class="anchor" aria-hidden="true" href="#1-basic-select-statement">#</a></h3>
+<p>To select all cart items:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>().<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>);
+</span></span></code></pre></div><h3 id="2-select-with-where-clause">2. SELECT with WHERE Clause<a hidden class="anchor" aria-hidden="true" href="#2-select-with-where-clause">#</a></h3>
+<p>To select cart items for a specific cart ID:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>().<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>).<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">cartId</span>, <span style="color:#e6db74">&#34;your-cart-id&#34;</span>)); <span style="color:#75715e">// UUID
+</span></span></span></code></pre></div><h3 id="3-filtering-results-with-and">3. Filtering Results with AND<a hidden class="anchor" aria-hidden="true" href="#3-filtering-results-with-and">#</a></h3>
+<p>To select reviews for a specific product by a specific user:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">and</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#e6db74">&#34;your-product-id&#34;</span>), <span style="color:#75715e">//  UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>, <span style="color:#e6db74">&#34;your-user-id&#34;</span>) <span style="color:#75715e">// UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    )
+</span></span><span style="display:flex;"><span>  );
+</span></span></code></pre></div><h3 id="4-filtering-results-with-or">4. Filtering Results with OR<a hidden class="anchor" aria-hidden="true" href="#4-filtering-results-with-or">#</a></h3>
+<p>To select reviews that are either from a specific user or have a specific rating:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">or</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>, <span style="color:#e6db74">&#34;your-user-id&#34;</span>), <span style="color:#75715e">// UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>, <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  );
+</span></span></code></pre></div><h3 id="5-filtering-results-with-not">5. Filtering Results with NOT<a hidden class="anchor" aria-hidden="true" href="#5-filtering-results-with-not">#</a></h3>
+<p>To select addresses that do not belong to a specific user:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">addresses</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">not</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">addresses</span>.<span style="color:#a6e22e">userId</span>, <span style="color:#e6db74">&#34;your-user-id&#34;</span>))); <span style="color:#75715e">//UUID
+</span></span></span></code></pre></div><p>Each query uses db.select() to initiate the selection.
+The .from() method specifies the table.
+The .where() method adds conditions, using eq(), and(), or(), and not() for filtering.
+Replace &lsquo;your-cart-id-here&rsquo;, &lsquo;your-product-id-here&rsquo;, and &lsquo;your-user-id-here&rsquo; with actual UUID values as needed.</p>
+<h3 id="6-sorting-results-with-order-by">6. Sorting Results with ORDER BY<a hidden class="anchor" aria-hidden="true" href="#6-sorting-results-with-order-by">#</a></h3>
+<p>To select all reviews and sort them by rating in descending order:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>().<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>).<span style="color:#a6e22e">orderBy</span>(<span style="color:#a6e22e">desc</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>)); <span style="color:#75715e">// Sort by rating in descending order
+</span></span></span></code></pre></div><h3 id="7-combining-order-by-with-limit">7. Combining ORDER BY with LIMIT<a hidden class="anchor" aria-hidden="true" href="#7-combining-order-by-with-limit">#</a></h3>
+<p>To select the top 5 highest-rated reviews for a specific product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#e6db74">&#34;your-product-id&#34;</span>)) <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">orderBy</span>(<span style="color:#a6e22e">desc</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>)) <span style="color:#75715e">// Sort by rating in descending order
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">limit</span>(<span style="color:#ae81ff">5</span>); <span style="color:#75715e">// Limit to 5 results
+</span></span></span></code></pre></div><h3 id="8-sorting-with-multiple-columns">8. Sorting with Multiple Columns<a hidden class="anchor" aria-hidden="true" href="#8-sorting-with-multiple-columns">#</a></h3>
+<p>To select cart items and sort them first by quantity in ascending order and then by productId in descending order:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>().<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>).<span style="color:#a6e22e">orderBy</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">asc</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">quantity</span>), <span style="color:#75715e">// Sort by quantity in ascending order
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">desc</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">productId</span>) <span style="color:#75715e">// Then by productId in descending order
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>);
+</span></span></code></pre></div><p>The .orderBy() method is used to specify the sorting criteria. You can use asc() for ascending order and desc() for descending order.
+The .limit() method restricts the number of results returned.
+Replace &lsquo;your-product-id-here&rsquo; with the actual UUID when executing the queries.</p>
+<h3 id="9-using-aggregate-functions">9. Using Aggregate Functions<a hidden class="anchor" aria-hidden="true" href="#9-using-aggregate-functions">#</a></h3>
+<p>COUNT()
+To count the number of reviews for a specific product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">countDistinct</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>), <span style="color:#75715e">// Count the number of review IDs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#e6db74">&#34;your-product-id&#34;</span>)); <span style="color:#75715e">// Replace with actual UUID
+</span></span></span></code></pre></div><p>SUM();
+To calculate the total amount of payments made:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">totalPayments</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">total</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sum</span>(<span style="color:#a6e22e">payments</span>.<span style="color:#a6e22e">amount</span>), <span style="color:#75715e">// Sum of all payment amounts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">payments</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><p>AVG();
+To calculate the average rating for a specific product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">averageRating</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">average</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>), <span style="color:#75715e">// Average of ratings
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#e6db74">&#34;your-product-id-here&#34;</span>)) <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><p>MIN()
+To find the minimum payment amount:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">minPayment</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">minimum</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">min</span>(<span style="color:#a6e22e">payments</span>.<span style="color:#a6e22e">amount</span>), <span style="color:#75715e">// Minimum payment amount
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">payments</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><p>MAX()
+To find the maximum rating for a specific product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">maxRating</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">maximum</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">max</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>), <span style="color:#75715e">// Maximum rating
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#e6db74">&#34;your-product-id-here&#34;</span>)) <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><h3 id="10-grouping-results-with-group-by">10. Grouping Results with GROUP BY<a hidden class="anchor" aria-hidden="true" href="#10-grouping-results-with-group-by">#</a></h3>
+<p>To group reviews by user and count how many reviews each user has made:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reviewCount</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">count</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>), <span style="color:#75715e">// Count reviews for each user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">groupBy</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>); <span style="color:#75715e">// Group by userId
+</span></span></span></code></pre></div><h3 id="11-filtering-groups-with-having">11. Filtering Groups with HAVING<a hidden class="anchor" aria-hidden="true" href="#11-filtering-groups-with-having">#</a></h3>
+<p>To find users who have made more than 3 reviews:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">reviewCount</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">count</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>), <span style="color:#75715e">// Count reviews for each user
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>})
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">groupBy</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>) <span style="color:#75715e">// Group by userId
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">having</span>(<span style="color:#a6e22e">gt</span>(<span style="color:#a6e22e">count</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>), <span style="color:#ae81ff">3</span>)); <span style="color:#75715e">// Filter groups with more than 3 reviews
+</span></span></span></code></pre></div><p>Use count(), sum(), avg(), min(), and max() to perform aggregate calculations.
+The .groupBy() method is used to group results based on specified columns.
+The .having() method allows filtering of grouped results, using conditions like gt() (greater than).
+Replace &lsquo;your-product-id-here&rsquo; with actual UUID values as needed.</p>
+<h2 id="intermediate">Intermediate<a hidden class="anchor" aria-hidden="true" href="#intermediate">#</a></h2>
+<h3 id="12-inner-join">12. Inner Join<a hidden class="anchor" aria-hidden="true" href="#12-inner-join">#</a></h3>
+<p>To select cart items along with the associated products:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">innerJoin</span>(<span style="color:#a6e22e">products</span>, <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>)); <span style="color:#75715e">// Join with products table
+</span></span></span></code></pre></div><h3 id="13-left-join">13. Left Join<a hidden class="anchor" aria-hidden="true" href="#13-left-join">#</a></h3>
+<p>To select all cart items and their associated products, including cart items that may not have a corresponding product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">leftJoin</span>(<span style="color:#a6e22e">products</span>, <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>));
+</span></span></code></pre></div><h3 id="14-right-join">14. Right Join<a hidden class="anchor" aria-hidden="true" href="#14-right-join">#</a></h3>
+<p>To select all products and their associated cart items, including products that may not have been added to any cart:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">products</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">rightJoin</span>(<span style="color:#a6e22e">cartItems</span>, <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>));
+</span></span></code></pre></div><h3 id="15-full-outer-join">15. Full Outer Join<a hidden class="anchor" aria-hidden="true" href="#15-full-outer-join">#</a></h3>
+<p>To select all cart items and products, including those that may not have matches in either table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">cartItems</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">fullOuterJoin</span>(<span style="color:#a6e22e">products</span>, <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">cartItems</span>.<span style="color:#a6e22e">productId</span>, <span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>));
+</span></span></code></pre></div><p>Each query uses the .select() method to initiate the selection.
+The .from() method specifies the primary table, while the join methods (innerJoin, leftJoin, rightJoin, fullOuterJoin, and crossJoin) specify how to combine it with other tables.
+The eq() function is used to define the condition for joining tables.</p>
+<h3 id="16-nested-subqueries-queries">16. Nested Subqueries Queries<a hidden class="anchor" aria-hidden="true" href="#16-nested-subqueries-queries">#</a></h3>
+<p>To find all products that have reviews with an average rating above 4.0:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">products</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">inArray</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>) })
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">groupBy</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">having</span>(<span style="color:#a6e22e">gt</span>(<span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>), <span style="color:#ae81ff">4.0</span>))
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  );
+</span></span></code></pre></div><h3 id="17-correlated-subqueries">17. Correlated Subqueries<a hidden class="anchor" aria-hidden="true" href="#17-correlated-subqueries">#</a></h3>
+<p>To find all users who have written reviews for products with an average rating above 4.0:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">users</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">exists</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>, <span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">id</span>), <span style="color:#75715e">// Correlated subquery linking userId
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#a6e22e">inArray</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>) })
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">groupBy</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>)
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">having</span>(<span style="color:#a6e22e">gt</span>(<span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>), <span style="color:#ae81ff">4.0</span>))
+</span></span><span style="display:flex;"><span>          )
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>  );
+</span></span></code></pre></div><p>Nested Queries: The first example uses a subquery to find product IDs that have an average rating greater than 4.0. The outer query then retrieves products that match these IDs using inArray().
+Correlated Subqueries: The second example retrieves users who have written reviews for products with an average rating above 4.0. The subquery correlates to the outer query by using users.id to link to reviews.userId.</p>
+<h3 id="18-union">18. UNION<a hidden class="anchor" aria-hidden="true" href="#18-union">#</a></h3>
+<p>To combine results from two different queries (e.g., retrieves user IDs from both reviews and wishlists):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span> })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">union</span>(<span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wishlists</span>.<span style="color:#a6e22e">userId</span> }).<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">wishlists</span>)); <span style="color:#75715e">// get user IDs from wishlists
+</span></span></span></code></pre></div><h3 id="19-union-all">19. UNION ALL<a hidden class="anchor" aria-hidden="true" href="#19-union-all">#</a></h3>
+<p>To combine results from two different queries without removing duplicates (e.g., retrieves all user IDs from reviews and wishlists):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span> })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">unionAll</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wishlists</span>.<span style="color:#a6e22e">userId</span> }).<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">wishlists</span>) <span style="color:#75715e">// get user IDs from wishlists
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span></code></pre></div><h3 id="20-intersect">20. INTERSECT<a hidden class="anchor" aria-hidden="true" href="#20-intersect">#</a></h3>
+<p>To find user IDs that exist in both reviews and wishlists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span> })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">intersect</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wishlists</span>.<span style="color:#a6e22e">userId</span> }).<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">wishlists</span>) <span style="color:#75715e">//  get user IDs from wishlists
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span></code></pre></div><h3 id="21-except">21. EXCEPT<a hidden class="anchor" aria-hidden="true" href="#21-except">#</a></h3>
+<p>To find user IDs from reviews that do not exist in wishlists:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span> })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">except</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">select</span>({ <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">wishlists</span>.<span style="color:#a6e22e">userId</span> }).<span style="color:#a6e22e">from</span>(<span style="color:#a6e22e">wishlists</span>) <span style="color:#75715e">// get user IDs from wishlists
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  );
+</span></span></code></pre></div><p>UNION: Combines the results of two queries while removing duplicates.
+UNION ALL: Combines the results of two queries without removing duplicates.
+INTERSECT: Retrieves common results from two queries.
+EXCEPT: Retrieves results from the first query that do not exist in the second query.</p>
+<h3 id="22-insert-statements">22. INSERT Statements<a hidden class="anchor" aria-hidden="true" href="#22-insert-statements">#</a></h3>
+<p>Inserting a New Cart Item
+To insert a new item into the cart_items table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">product</span>).<span style="color:#a6e22e">values</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Coke&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Coca Cola&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">price</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1.99</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">stockQuantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">120</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><h3 id="23-update-statements">23. UPDATE Statements<a hidden class="anchor" aria-hidden="true" href="#23-update-statements">#</a></h3>
+<p>Updating a Review
+To update the comment and rating of a specific review:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">reviews</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">set</span>({
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rating</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">5</span>, <span style="color:#75715e">// New rating
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">comment</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Updated comment text.&#34;</span>, <span style="color:#75715e">// Updated comment
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  })
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>, <span style="color:#e6db74">&#34;your-review-id-here&#34;</span>)); <span style="color:#75715e">// Replace with actual UUID
+</span></span></span></code></pre></div><h3 id="24-delete-statements">24. DELETE Statements<a hidden class="anchor" aria-hidden="true" href="#24-delete-statements">#</a></h3>
+<p>Deleting a Wishlist Item
+To delete a specific item from the wishlist_items table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">wishlistItems</span>).<span style="color:#a6e22e">where</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">wishlistItems</span>.<span style="color:#a6e22e">id</span>, <span style="color:#e6db74">&#34;your-wishlist-item-id-here&#34;</span>)
+</span></span><span style="display:flex;"><span>); <span style="color:#75715e">// Replace with actual UUID
+</span></span></span></code></pre></div><p>Explanation
+INSERT: The insert() method is used to add a new record to a table. The .values() method specifies the data to be inserted.
+UPDATE: The update() method modifies existing records in a table. The .set() method specifies the new values, and the .where() method identifies which record to update.
+DELETE: The delete() method removes records from a table. The .where() method specifies which record(s) to delete.</p>
+<p>Understanding ACID Properties
+ACID stands for:</p>
+<p>Atomicity: Transactions are all-or-nothing. If one part of the transaction fails, the entire transaction fails.
+Consistency: Transactions must leave the database in a consistent state, adhering to all rules and constraints.
+Isolation: Transactions should not interfere with one another. Each transaction operates independently.
+Durability: Once a transaction is committed, it remains so, even in the event of a system failure.
+COMMIT and ROLLBACK Statements
+In Drizzle ORM, you can manage transactions using COMMIT and ROLLBACK to ensure that your operations adhere to ACID properties.</p>
+<h3 id="25transaction">25.Transaction<a hidden class="anchor" aria-hidden="true" href="#25transaction">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">transaction</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Insert a new cart item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">cartItems</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">values</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-cart-item-uuid&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">cartId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-cart-id&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-product-id&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">execute</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Update a product&#39;s stock (for example)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">products</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">set</span>({ <span style="color:#a6e22e">stock</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decrement</span>(<span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">stock</span>, <span style="color:#ae81ff">1</span>) }) <span style="color:#75715e">// Decrease stock by 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>, <span style="color:#e6db74">&#34;your-product-id&#34;</span>)) <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">execute</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Commit the transaction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">commit</span>();
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Transaction failed:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Rollback the transaction in case of error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">rollback</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="26savepoints">26.Savepoints<a hidden class="anchor" aria-hidden="true" href="#26savepoints">#</a></h3>
+<p>Savepoints allow you to set a point within a transaction to which you can roll back without affecting the entire transaction.</p>
+<p>Example of Using Savepoints</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">transaction</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Start the transaction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">begin</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Insert a new cart item
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">cartItems</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">values</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-cart-item-uuid&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">cartId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-cart-id&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your-product-id&#34;</span>, <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">quantity</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">execute</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Create a savepoint
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">savepoint</span>(<span style="color:#e6db74">&#34;afterInsert&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Update a product&#39;s stock
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">update</span>(<span style="color:#a6e22e">products</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">set</span>({ <span style="color:#a6e22e">stock</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">decrement</span>(<span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">stock</span>, <span style="color:#ae81ff">1</span>) }) <span style="color:#75715e">// Decrease stock by 1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#a6e22e">products</span>.<span style="color:#a6e22e">id</span>, <span style="color:#e6db74">&#34;your-product-id&#34;</span>)) <span style="color:#75715e">// Replace with actual UUID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">execute</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// If something goes wrong, roll back to the savepoint
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// Uncomment to simulate error handling
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// throw new Error(&#39;Simulated error&#39;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Commit the transaction if everything is fine
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">commit</span>();
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#34;Transaction failed:&#34;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Rollback to the savepoint if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">transaction</span>.<span style="color:#a6e22e">rollbackTo</span>(<span style="color:#e6db74">&#34;afterInsert&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Or rollback the entire transaction
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#75715e">// await transaction.rollback();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
+</span></span></code></pre></div><p>Explanation
+COMMIT: Saves all changes made during the transaction. In the example, if all operations succeed, the transaction is committed.
+ROLLBACK: Reverts any changes made during the transaction if an error occurs. You can roll back to the last savepoint or the entire transaction.
+Savepoints: Allow you to set a point within a transaction. If an error occurs after a savepoint, you can roll back to that point rather than starting over from the beginning.</p>
+<h3 id="27-indexes">27. Indexes<a hidden class="anchor" aria-hidden="true" href="#27-indexes">#</a></h3>
+<p>What Are Indexes?
+Indexes are special database structures that improve the speed of data retrieval operations on a database table. They work similarly to an index in a book, allowing the database to find and access data without scanning every row in the table.</p>
+<p>Benefits of Indexes
+Faster Query Performance: Indexes can significantly reduce the time it takes to retrieve data, especially for large tables.
+Efficient Sorting: They help speed up the sorting of results, particularly when using ORDER BY clauses.
+Improved Filtering: Indexes enhance the performance of queries that filter data using WHERE clauses.
+Creating and Dropping Indexes
+In Drizzle ORM, you can create and drop indexes using the following methods:</p>
+<p>Creating an Index
+To create an index on a specific column (e.g., on the productId column in the reviews table):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">createIndex</span>(<span style="color:#e6db74">&#34;idx_reviews_productId&#34;</span>, <span style="color:#a6e22e">reviews</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">columns</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>],
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>This creates an index named idx_reviews_productId on the productId column of the reviews table.</p>
+<p>Dropping an Index
+To drop an index when it&rsquo;s no longer needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">dropIndex</span>(<span style="color:#e6db74">&#34;idx_reviews_productId&#34;</span>);
+</span></span></code></pre></div><p>This removes the index named idx_reviews_productId.</p>
+<p>Impact of Indexes on Performance
+While indexes can greatly improve read performance, they also have some trade-offs:</p>
+<p>Positive Impacts
+Faster Query Execution: Queries that use indexed columns in WHERE, JOIN, and ORDER BY clauses run faster.
+Reduced I/O Operations: Indexes allow the database to read only the relevant rows instead of scanning the entire table.
+Negative Impacts
+Slower Write Operations: Insert, update, and delete operations can slow down because the database must also update the index.
+Increased Storage Space: Indexes consume additional disk space, which can be significant for large tables or multiple indexes.
+Conclusion
+Indexes are powerful tools for enhancing database performance, especially for read-heavy applications. However, it&rsquo;s crucial to balance the benefits of faster query performance against the overhead they introduce for write operations and storage requirements. Careful planning and analysis are necessary to determine when and where to use indexes effectively.</p>
+<h2 id="advanced">Advanced<a hidden class="anchor" aria-hidden="true" href="#advanced">#</a></h2>
+<h3 id="views-in-databases">Views in Databases<a hidden class="anchor" aria-hidden="true" href="#views-in-databases">#</a></h3>
+<p>Views are virtual tables that provide a way to represent the result of a query as if it were a table. They can simplify complex queries, enhance security by restricting access to certain data, and allow users to work with a simplified representation of the data.</p>
+<h4 id="creating-and-using-views">Creating and Using Views<a hidden class="anchor" aria-hidden="true" href="#creating-and-using-views">#</a></h4>
+<p>Creating a View
+To create a view in Drizzle ORM, you can define it based on a query. For example, creating a view to show the average rating of each product:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">createView</span>(<span style="color:#e6db74">&#34;product_average_ratings&#34;</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">select</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">averageRating</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">avg</span>(<span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>),
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">from</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">groupBy</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>This creates a view named product_average_ratings that calculates the average rating for each product.</p>
+<h4 id="using-a-view">Using a View<a hidden class="anchor" aria-hidden="true" href="#using-a-view">#</a></h4>
+<p>To query data from a view:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">productRatings</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">select</span>()
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">from</span>(<span style="color:#e6db74">&#34;product_average_ratings&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><p>This retrieves the average ratings from the product_average_ratings view.</p>
+<h4 id="updatable-views">Updatable Views<a hidden class="anchor" aria-hidden="true" href="#updatable-views">#</a></h4>
+<p>Updatable views allow you to perform INSERT, UPDATE, and DELETE operations on the view, which will affect the underlying tables. However, not all views are updatable. A view is typically updatable if it meets certain conditions, such as:</p>
+<p>It is based on a single table.
+It does not include aggregate functions.
+It does not use DISTINCT, GROUP BY, or HAVING.
+Example of an Updatable View
+If you create a simple view on the reviews table:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">createView</span>(<span style="color:#e6db74">&#34;user_reviews&#34;</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">select</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">id</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">id</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">userId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">userId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">productId</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">productId</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">rating</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">rating</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">comment</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>.<span style="color:#a6e22e">comment</span>,
+</span></span><span style="display:flex;"><span>  },
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">from</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">reviews</span>,
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>You can update the view:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">db</span>
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">update</span>(<span style="color:#e6db74">&#34;user_reviews&#34;</span>)
+</span></span><span style="display:flex;"><span>  .<span style="color:#a6e22e">set</span>({ <span style="color:#a6e22e">rating</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span> }) <span style="color:#75715e">// Update the rating
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">where</span>(<span style="color:#a6e22e">eq</span>(<span style="color:#e6db74">&#34;id&#34;</span>, <span style="color:#e6db74">&#34;your-review-id-here&#34;</span>)) <span style="color:#75715e">// Specify the review ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  .<span style="color:#a6e22e">execute</span>();
+</span></span></code></pre></div><h4 id="materialized-views">Materialized Views<a hidden class="anchor" aria-hidden="true" href="#materialized-views">#</a></h4>
+<p>Materialized views are similar to regular views but store the result of the query physically. This allows for faster access to data, as the results do not need to be recalculated on each query. However, they require maintenance to keep the data up to date.</p>
+<h4 id="creating-a-materialized-view">Creating a Materialized View<a hidden class="anchor" aria-hidden="true" href="#creating-a-materialized-view">#</a></h4>
+<p>To create a materialized view (if supported by the database), you might use a command like this (note that Drizzle ORM may not directly support creating materialized views, and you may need to use raw SQL):</p>
+<p>``sql
+CREATE MATERIALIZED VIEW product_ratings_mv AS
+SELECT productId, AVG(rating) AS averageRating
+FROM reviews
+GROUP BY productId;</p>
+<pre tabindex="0"><code>#### Refreshing a Materialized View
+To update the data in a materialized view, you typically need to refresh it:
+
+``sql
+REFRESH MATERIALIZED VIEW product_ratings_mv;
+</code></pre><h4 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h4>
+<p>Views: Simplify complex queries and provide a secure interface to the data.
+Updatable Views: Allow data manipulation through the view, affecting the underlying tables.
+Materialized Views: Store query results physically for faster access, requiring periodic refreshes to update the data.
+Using views effectively can enhance both performance and security in your database applications!</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/drizzle/">Drizzle</a></li>
+      <li><a href="http://localhost:1313/tags/docker/">Docker</a></li>
+      <li><a href="http://localhost:1313/tags/express/">Express</a></li>
+      <li><a href="http://localhost:1313/tags/api/">Api</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2024 <a href="http://localhost:1313/">Functor Fungi</a></span>
+       
+   
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
