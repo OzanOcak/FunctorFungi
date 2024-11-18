@@ -16,9 +16,11 @@ cover:
 showToc: true # show the table of content22
 ---
 
-## Advanced SQL Queries with Drizzle
+## Introduction
 
 In modern web development, efficiently managing database interactions is crucial for building responsive applications. Drizzle, a powerful TypeScript ORM, provides developers with a robust toolkit for querying and observing database tables. One of its standout features is the ease of use in executing SQL queries, allowing for seamless data retrieval and manipulation.
+
+### Drizzle-Kit Studio
 
 ```bash
 npx drizzle-kit studio
@@ -28,7 +30,7 @@ To streamline your database interactions, you can utilize npx drizzle-kit studio
 
 You can also see database diagram and source code of project in [github](https://github.com/OzanOcak/json-rpc-api)
 
-## execute() vs returning()
+### execute() vs returning()
 
 When working with Drizzle, you often encounter two primary methods for executing queries: execute() and returning(). Understanding the difference between these methods is essential for effective data handling.
 
@@ -55,6 +57,83 @@ const result = await db
     description: true,
   });
 ```
+
+### Relations and ORM like Queries
+
+You can also create relations and qury like prisma orm with drizzle.
+
+#### One-to-Many Relationship Example
+
+Example: Users and Orders
+In this case, a user can have many orders.
+
+```js
+export const ordersRelations = relations(orders, ({ one, many }) => ({
+  user: one(users, {
+    fields: [orders.userId],
+    references: [users.id],
+  }),
+}));
+```
+
+#### Many-to-Many Relationship Example
+
+Example: Products and Categories
+In this case, products can belong to many categories, and categories can have many products.
+
+```js
+export const productCategoriesRelations = relations(
+  product_categories,
+  ({ one, many }) => ({
+    product: one(products, {
+      fields: [product_categories.product_id],
+      references: [products.id],
+    }),
+    category: one(categories, {
+      fields: [product_categories.category_id],
+      references: [categories.id],
+    }),
+  })
+);
+
+export const productsRelations = relations(products, ({ many }) => ({
+  categories: many(product_categories),
+}));
+```
+
+#### Sample Queries
+
+One-to-Many Query: Fetching a User's Orders
+
+```js
+async function fetchUserOrders(userId) {
+  const userWithOrders = await db.users.findOne({
+    where: { id: userId },
+    include: {
+      orders: true, // This will include the orders related to the user
+    },
+  });
+  return userWithOrders;
+}
+```
+
+Many-to-Many Query: Fetching Products with Their Categories
+
+```js
+async function fetchProductCategories(productId) {
+  const productWithCategories = await db.products.findOne({
+    where: { id: productId },
+    include: {
+      categories: true, // This will include the categories related to the product
+    },
+  });
+  return productWithCategories;
+}
+```
+
+The one-to-many relationship example shows how a user can be linked to multiple orders.
+The many-to-many relationship example illustrates how products can be associated with multiple categories and vice versa.
+Sample queries demonstrate how to fetch related data using these relationships in an ORM-like style.
 
 ## Basic
 
