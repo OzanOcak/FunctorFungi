@@ -1,7 +1,7 @@
 ---
 title: "Tanstack React Query"
 author: ["Ozan"]
-date: 2024-11-15T15:00:06-05:00
+date: 2024-11-18T15:00:06-05:00
 categories: ["programming"]
 tags: ["react", "react-query", "axios"]
 description: "Tanstack React Query"

@@ -1,6 +1,6 @@
 ---
 title: "Advanced Sql Queries With Drizzle"
-date: 2024-11-14T15:00:06-05:00
+date: 2024-11-16T15:00:06-05:00
 author: ["Ozan"]
 categories: ["programming"]
 tags: ["drizzle", "docker", "express", "api"]

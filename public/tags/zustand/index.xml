@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Zustand on Functor Fungi</title>
+    <link>http://localhost:53471/tags/zustand/</link>
+    <description>Recent content in Zustand on Functor Fungi</description>
+    <generator>Hugo -- 0.131.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Nov 2024 15:00:06 -0500</lastBuildDate>
+    <atom:link href="http://localhost:53471/tags/zustand/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zustand</title>
+      <link>http://localhost:53471/posts/zustand/</link>
+      <pubDate>Sun, 17 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/zustand/</guid>
+      <description>Zustand</description>
+    </item>
+  </channel>
+</rss>

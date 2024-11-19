@@ -2,31 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>React on Functor Fungi</title>
-    <link>http://localhost:1313/tags/react/</link>
+    <link>http://localhost:53471/tags/react/</link>
     <description>Recent content in React on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2024 15:00:06 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Nov 2024 15:00:06 -0500</lastBuildDate>
+    <atom:link href="http://localhost:53471/tags/react/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tanstack React Query</title>
-      <link>http://localhost:1313/posts/tanstack-react-query/</link>
-      <pubDate>Fri, 15 Nov 2024 15:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/tanstack-react-query/</guid>
+      <link>http://localhost:53471/posts/tanstack-react-query/</link>
+      <pubDate>Mon, 18 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/tanstack-react-query/</guid>
       <description>Tanstack React Query</description>
     </item>
     <item>
+      <title>Zustand</title>
+      <link>http://localhost:53471/posts/zustand/</link>
+      <pubDate>Sun, 17 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/zustand/</guid>
+      <description>Zustand</description>
+    </item>
+    <item>
       <title>Understanding React Router: Complete Guide to createBrowserRouter</title>
-      <link>http://localhost:1313/posts/react-router/</link>
+      <link>http://localhost:53471/posts/react-router/</link>
       <pubDate>Tue, 01 Oct 2024 10:43:30 -0400</pubDate>
-      <guid>http://localhost:1313/posts/react-router/</guid>
+      <guid>http://localhost:53471/posts/react-router/</guid>
       <description>React Router with createBrowserRouter</description>
     </item>
     <item>
       <title>Building Personal Website With Next and React</title>
-      <link>http://localhost:1313/projects/building-personal-website-with-next-and-react/</link>
+      <link>http://localhost:53471/projects/building-personal-website-with-next-and-react/</link>
       <pubDate>Mon, 19 Aug 2024 22:53:13 -0400</pubDate>
-      <guid>http://localhost:1313/projects/building-personal-website-with-next-and-react/</guid>
+      <guid>http://localhost:53471/projects/building-personal-website-with-next-and-react/</guid>
       <description>Building Personal Website With Next and React</description>
     </item>
   </channel>

@@ -2,66 +2,73 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Functor Fungi</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://localhost:53471/posts/</link>
     <description>Recent content in Posts on Functor Fungi</description>
     <generator>Hugo -- 0.131.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2024 15:00:06 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Nov 2024 15:00:06 -0500</lastBuildDate>
+    <atom:link href="http://localhost:53471/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tanstack React Query</title>
-      <link>http://localhost:1313/posts/tanstack-react-query/</link>
-      <pubDate>Fri, 15 Nov 2024 15:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/tanstack-react-query/</guid>
+      <link>http://localhost:53471/posts/tanstack-react-query/</link>
+      <pubDate>Mon, 18 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/tanstack-react-query/</guid>
       <description>Tanstack React Query</description>
     </item>
     <item>
+      <title>Zustand</title>
+      <link>http://localhost:53471/posts/zustand/</link>
+      <pubDate>Sun, 17 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/zustand/</guid>
+      <description>Zustand</description>
+    </item>
+    <item>
       <title>Advanced Sql Queries With Drizzle</title>
-      <link>http://localhost:1313/posts/advanced-sql-queries-with-drizzle/</link>
-      <pubDate>Thu, 14 Nov 2024 15:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/advanced-sql-queries-with-drizzle/</guid>
+      <link>http://localhost:53471/posts/advanced-sql-queries-with-drizzle/</link>
+      <pubDate>Sat, 16 Nov 2024 15:00:06 -0500</pubDate>
+      <guid>http://localhost:53471/posts/advanced-sql-queries-with-drizzle/</guid>
       <description>Advanced Sql Queries With Drizzle</description>
     </item>
     <item>
       <title>Setting Up Drizzle on an RPC Server</title>
-      <link>http://localhost:1313/posts/drizzle/</link>
+      <link>http://localhost:53471/posts/drizzle/</link>
       <pubDate>Thu, 14 Nov 2024 15:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/drizzle/</guid>
+      <guid>http://localhost:53471/posts/drizzle/</guid>
       <description>Drizzle</description>
     </item>
     <item>
       <title>Building a JSON-RPC API with TypeScript and Express</title>
-      <link>http://localhost:1313/posts/trpc/</link>
+      <link>http://localhost:53471/posts/trpc/</link>
       <pubDate>Wed, 13 Nov 2024 20:00:06 -0500</pubDate>
-      <guid>http://localhost:1313/posts/trpc/</guid>
+      <guid>http://localhost:53471/posts/trpc/</guid>
       <description>Trpc</description>
     </item>
     <item>
       <title>Understanding React Router: Complete Guide to createBrowserRouter</title>
-      <link>http://localhost:1313/posts/react-router/</link>
+      <link>http://localhost:53471/posts/react-router/</link>
       <pubDate>Tue, 01 Oct 2024 10:43:30 -0400</pubDate>
-      <guid>http://localhost:1313/posts/react-router/</guid>
+      <guid>http://localhost:53471/posts/react-router/</guid>
       <description>React Router with createBrowserRouter</description>
     </item>
     <item>
       <title>Setting Up a Simple Node.js Express Api and PostgreSql database with Docker</title>
-      <link>http://localhost:1313/posts/node-express-api-docker/</link>
+      <link>http://localhost:53471/posts/node-express-api-docker/</link>
       <pubDate>Mon, 23 Sep 2024 13:33:34 -0400</pubDate>
-      <guid>http://localhost:1313/posts/node-express-api-docker/</guid>
+      <guid>http://localhost:53471/posts/node-express-api-docker/</guid>
       <description>Node Express Api Docker</description>
     </item>
     <item>
       <title>Understanding Advanced Types in TypeScript</title>
-      <link>http://localhost:1313/posts/typescript/</link>
+      <link>http://localhost:53471/posts/typescript/</link>
       <pubDate>Sun, 22 Sep 2024 17:21:02 -0400</pubDate>
-      <guid>http://localhost:1313/posts/typescript/</guid>
+      <guid>http://localhost:53471/posts/typescript/</guid>
       <description>Typescript</description>
     </item>
     <item>
       <title>How to Build Hugo Website</title>
-      <link>http://localhost:1313/posts/how-to-build-hugo-website/</link>
+      <link>http://localhost:53471/posts/how-to-build-hugo-website/</link>
       <pubDate>Mon, 19 Aug 2024 14:38:39 -0400</pubDate>
-      <guid>http://localhost:1313/posts/how-to-build-hugo-website/</guid>
+      <guid>http://localhost:53471/posts/how-to-build-hugo-website/</guid>
       <description>How to Build Hugo Website</description>
     </item>
   </channel>
